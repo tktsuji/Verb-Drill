@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">Verb Drop</string>
     <string name="action_settings">Settings</string>
+    <string name="buttonStart">Start</string>
+    <string name="buttonSettings">Settings</string>
+    <string name="buttonHelp">Help</string>
+
+    <string name="txtViewTranslate">Translate to Spanish:</string>
+    <string name="txtViewEngPhrase">Eng</string>
 </resources>
