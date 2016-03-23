@@ -1,27 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@drawable/gamebkg">
+
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/txtViewTranslate"
-        android:id="@+id/txtViewTranslate"
-        android:layout_marginTop="40dp"
-        android:textSize="20sp"
+        android:text="@string/txtViewPrompt"
+        android:id="@+id/txtViewPrompt"
+        android:layout_marginTop="24dp"
+        android:textSize="16sp"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginLeft="16dp" />
+        android:layout_marginLeft="18dp"
+        android:textColor="#000000" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/txtViewEngPhrase"
         android:id="@+id/txtViewEngPhrase"
-        android:layout_below="@+id/txtViewTranslate"
+        android:layout_below="@+id/txtViewPrompt"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"
-        android:textSize="24sp" />
+        android:textSize="24sp"
+        android:textColor="#000000" />
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="@string/txtViewSpSubj"
+        android:id="@+id/txtViewSpSubject"
+        android:textSize="20sp"
+        android:gravity="right"
+        android:layout_alignBottom="@+id/txtViewPeriod"
+        android:layout_toLeftOf="@+id/editTxtAnswer"
+        android:layout_toStartOf="@+id/editTxtAnswer"
+        android:layout_marginRight="2dp"
+        android:textColor="#000000" />
+
+    <EditText
+        android:layout_width="215dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/editTxtAnswer"
+        android:inputType="text"
+        android:layout_marginTop="34dp"
+        android:gravity="center"
+        android:layout_below="@+id/txtViewEngPhrase"
+        android:layout_toLeftOf="@+id/txtViewPeriod"
+        android:layout_toStartOf="@+id/txtViewPeriod"
+        android:textSize="22sp" />
+
+    <TextView
+        android:layout_width="215dp"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:id="@+id/txtViewFinalAnswer"
+        android:layout_marginTop="34dp"
+        android:gravity="center"
+        android:layout_below="@+id/txtViewEngPhrase"
+        android:layout_toLeftOf="@+id/txtViewPeriod"
+        android:layout_toStartOf="@+id/txtViewPeriod"
+        android:textSize="20sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="."
+        android:id="@+id/txtViewPeriod"
+        android:textSize="25sp"
+        android:paddingTop="10dp"
+        android:layout_alignTop="@+id/editTxtAnswer"
+        android:layout_alignRight="@+id/buttonGo"
+        android:layout_alignEnd="@+id/buttonGo" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/buttonGo"
+        android:id="@+id/buttonGo"
+        android:onClick="onButtonPress"
+        android:layout_marginRight="33dp"
+        android:layout_marginEnd="33dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:background="@color/colorGreen1"
+        android:textColor="#000000"
+        android:layout_marginBottom="40dp"
+        android:textSize="20sp" />
 
 </RelativeLayout>

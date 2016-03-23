@@ -5,6 +5,8 @@
     <string name="buttonSettings">Settings</string>
     <string name="buttonHelp">Help</string>
 
-    <string name="txtViewTranslate">Translate to Spanish:</string>
+    <string name="txtViewPrompt">Translate to Spanish:</string>
     <string name="txtViewEngPhrase">Eng</string>
+    <string name="txtViewSpSubj">SpSubj</string>
+    <string name="buttonGo">Go!</string>
 </resources>

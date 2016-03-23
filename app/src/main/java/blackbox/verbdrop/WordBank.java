@@ -4,7 +4,7 @@ package blackbox.verbdrop;
  * Created by tricia on 3/21/16.
  */
 public class WordBank {
-    private static int totalCount;
+    private static int numWords;
    // Regular -ar verbs
     private static final Verb[] regArVerbs = {
            new Verb("arrive", "llegar"),
@@ -29,15 +29,15 @@ public class WordBank {
     };
 
     public WordBank() {
-        totalCount = regArVerbs.length + regErVerbs.length + regIrVerbs.length;
+        numWords = regArVerbs.length + regErVerbs.length + regIrVerbs.length;
     }
 
-    public int getTotalCount() {
-        return totalCount;
+    public int getNumWords() {
+        return numWords;
     }
 
     public Verb[] getAllVerbs() {
-        Verb[] allVerbs = new Verb[totalCount];
+        Verb[] allVerbs = new Verb[numWords];
         int i;
 
         for (i = 0; i < regArVerbs.length; i++) {

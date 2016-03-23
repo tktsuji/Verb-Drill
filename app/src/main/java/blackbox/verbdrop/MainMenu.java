@@ -1,12 +1,14 @@
 package blackbox.verbdrop;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 
 public class MainMenu extends AppCompatActivity {
 
@@ -16,6 +18,13 @@ public class MainMenu extends AppCompatActivity {
         setContentView(R.layout.activity_main_menu);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/chalkboard-bold.ttf");
+        Button startBtn = (Button) findViewById(R.id.buttonStart);
+        Button settingsBtn = (Button) findViewById(R.id.buttonSettings);
+        Button helpBtn = (Button) findViewById(R.id.buttonHelp);
+        startBtn.setTypeface(tf);
+        settingsBtn.setTypeface(tf);
+        helpBtn.setTypeface(tf);
     }
 
     @Override
@@ -51,7 +60,7 @@ public class MainMenu extends AppCompatActivity {
             case R.id.buttonStart :
                 i = new Intent(this, Game.class);
                 startActivity(i);
-                finish();
+                //finish();
                 break;
         }
     }
