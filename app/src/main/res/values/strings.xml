@@ -9,4 +9,12 @@
     <string name="txtViewEngPhrase">Eng</string>
     <string name="txtViewSpSubj">SpSubj</string>
     <string name="buttonGo">Go!</string>
+    <string name="txtViewStreak">Streak: </string>
+    <string name="txtViewStreakNum">0</string>
+
+    <string name="txtViewOver">Whoops!</string>
+    <string name="txtViewCorrect">Correct Answer: </string>
+    <string name="txtViewYourResponse">Your Response: </string>
+    <string name="txtViewHighStreak">High Streak: </string>
+
 </resources>

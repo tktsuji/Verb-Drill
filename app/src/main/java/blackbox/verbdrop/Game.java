@@ -20,41 +20,44 @@ import java.util.Random;
  */
 
 public class Game extends Activity {
-
     private WordBank wordBank = new WordBank();
     private Verb[] verbList;
+    private Verb randVerb;
     private int numOfVerbs;
-    private Button buttonGo;
-    private TextView prompt, engPhrase, spSubj, finalAnswer;
-    private EditText answer;
+    private int randSubjIndx;
     private static final String[] ENG_SUBJECTS = {
             "I", "You", "You",
-            "You all", "We", "They",
-            "He", "She"
+            "He", "She", "We",
+            "You all", "They", "They"
+    };
+    private static final String[] SP_SUBJECTS = {
+            "Yo", "Tu", "Usted",
+            "El", "Ella", "Nosotros",
+            "Ustedes", "Ellos", "Ellas"
     };
 
-    private static final String[] SP_SUBJECTS = {
-            "Yo", "Usted", "Tu",
-            "Ustedes", "Nosotros", "Ellos\n/Ellas",
-            "El", "Ella"
-    };
+    private Button buttonGo;
+    private EditText answer;
+    private TextView promptTV, engPhraseTV, spSubjTV, finalAnswerTV, streakTV, gameOverTV;
+    private Typeface tf;
 
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game);
         verbList = wordBank.getAllVerbs();
         numOfVerbs = wordBank.getNumWords();
-        Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/chalkboard-bold.ttf");
+        tf = Typeface.createFromAsset(getAssets(), "fonts/chalkboard-bold.ttf");
         buttonGo = (Button) findViewById(R.id.buttonGo);
         buttonGo.setTypeface(tf);
-        prompt = (TextView) findViewById(R.id.txtViewPrompt);
-        prompt.setTypeface(tf);
-        engPhrase = (TextView) findViewById(R.id.txtViewEngPhrase);
-        engPhrase.setTypeface(tf);
-        spSubj = (TextView) findViewById(R.id.txtViewSpSubject);
-        spSubj.setTypeface(tf);
+        promptTV = (TextView) findViewById(R.id.txtViewPrompt);
+        promptTV.setTypeface(tf);
+        engPhraseTV = (TextView) findViewById(R.id.txtViewEngPhrase);
+        engPhraseTV.setTypeface(tf);
+        spSubjTV = (TextView) findViewById(R.id.txtViewSpSubject);
+        spSubjTV.setTypeface(tf);
         answer = (EditText) findViewById(R.id.editTxtAnswer);
-        finalAnswer = (TextView) findViewById(R.id.txtViewFinalAnswer);
+        finalAnswerTV = (TextView) findViewById(R.id.txtViewFinalAnswer);
+        streakTV = (TextView) findViewById(R.id.txtViewStreak);
     }
 
      protected void onStart() {
@@ -68,30 +71,71 @@ public class Game extends Activity {
         int randNum1 = rand1.nextInt(ENG_SUBJECTS.length);
         String engSubject = ENG_SUBJECTS[randNum1];
         String spSubject  = SP_SUBJECTS[randNum1];
+        randSubjIndx = randNum1;
 
         // Get random verb
         Random rand2 = new Random();
         int randNum2 = rand2.nextInt(numOfVerbs);
-        Verb randVerb = verbList[randNum2];
+        randVerb = verbList[randNum2];
         String engVerb = randVerb.getInEnglish();
-        if (randNum1 == 6 || randNum1 == 7)
+        if (randNum1 == 3 || randNum1 == 4)
             engVerb = engVerb + "s";
 
         // Display phrase
         String phrase = engSubject + " " + engVerb + ".";
-        engPhrase.setText(phrase);
-        spSubj.setText(spSubject);
+        engPhraseTV.setText(phrase);
+        spSubjTV.setText(spSubject);
     }
 
     public void onButtonPress(View v) {
-        String answerString = answer.getText().toString();
-        finalAnswer.setText(answerString);
-        answer.setText("");
+        String userAnswer = answer.getText().toString();
+        if (isAnswerCorrect(userAnswer)) {
+            finalAnswerTV.setText(userAnswer);
+            answer.setText("");
+            Animation animation=new TranslateAnimation(0,0,0,4000);
+            animation.setDuration(2000);
+            finalAnswerTV.startAnimation(animation);
+            finalAnswerTV.setVisibility(View.INVISIBLE);
+        }
+        else {
+            setContentView(R.layout.game_over);
+            gameOverTV = (TextView) findViewById(R.id.txtViewOver);
+            TextView correctAnsw = (TextView) findViewById(R.id.txtViewCorrect2);
+            TextView yourResponse = (TextView) findViewById(R.id.txtViewYourResponse2);
+            TextView streak = (TextView) findViewById(R.id.txtViewStreak2);
+            gameOverTV.setTypeface(tf);
+            correctAnsw.setTypeface(tf);
+            yourResponse.setTypeface(tf);
+            streak.setTypeface(tf);
 
-        //answer.setLayoutParams(positionRules);
-        Animation animation=new TranslateAnimation(0,0,0,500);
-        animation.setDuration(1000);
-        finalAnswer.startAnimation(animation);
-        finalAnswer.setVisibility(View.INVISIBLE);
+            correctAnsw.setText(SP_SUBJECTS[randSubjIndx] + " " + getCorrectAnswer());
+            yourResponse.setText(SP_SUBJECTS[randSubjIndx] + " " + userAnswer);
+            //streak.setText()
+        }
+
+    }
+
+    private boolean isAnswerCorrect(String userAnswer) {
+        String correctAnswer = getCorrectAnswer();
+        userAnswer = userAnswer.toLowerCase();
+        if (userAnswer.equals(correctAnswer))
+            return true;
+        else
+            return false;
+    }
+
+    private String getCorrectAnswer() {
+        String correctAnswer;
+        if (randSubjIndx == 0) // yo form
+            correctAnswer = randVerb.getYoForm();
+        else if (randSubjIndx == 1)
+            correctAnswer = randVerb.getTuForm();
+        else if (randSubjIndx == 2 || randSubjIndx == 3 || randSubjIndx == 4)
+            correctAnswer = randVerb.getUstedForm();
+        else if (randSubjIndx == 5)
+            correctAnswer = randVerb.getNosotrosForm();
+        else
+            correctAnswer = randVerb.getUstedesForm();
+        return correctAnswer;
     }
 }

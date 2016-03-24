@@ -3,46 +3,87 @@
     android:id="@+id/db1_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="horizontal">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dip"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
         android:layout_weight="1"
         android:gravity="center|bottom"
         android:orientation="vertical"
         android:layout_marginBottom="16dp">
 
-        <Button
-            android:id="@+id/buttonStart"
-            android:layout_width="150dp"
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal|center"
-            android:text="@string/buttonStart"
-            android:textSize="20dp"
-            android:background="@color/colorAccent2"
-            android:layout_marginBottom="12dp"
-            android:onClick="ButtonOnClick" />
+            android:gravity="center" >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text=">"
+                android:id="@+id/txtViewArrow"
+                android:layout_gravity="center_vertical"
+                android:textColor="@color/colorRed1"
+                android:textSize="30sp" />
+            <Button
+                android:id="@+id/buttonStart"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:background="@color/colorAccent2"
+                android:onClick="ButtonOnClick"
+                android:text="@string/buttonStart"
+                android:textSize="20dp"/>
+        </LinearLayout>
 
-        <Button
-            android:id="@+id/buttonSettings"
-            android:layout_width="150dp"
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal|center"
-            android:text="@string/buttonSettings"
-            android:textSize="20dp"
-            android:background="@color/colorAccent2"
-            android:layout_marginBottom="12dp" />
+            android:gravity="center" >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text=">"
+                android:id="@+id/txtViewArrow2"
+                android:layout_gravity="center_vertical"
+                android:textColor="@color/colorRed1"
+                android:textSize="30sp" />
+            <Button
+                android:id="@+id/buttonSettings"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:background="@color/colorAccent2"
+                android:text="@string/buttonSettings"
+                android:textSize="20dp" />
+        </LinearLayout>
 
-        <Button
-            android:id="@+id/buttonHelp"
-            android:layout_width="150dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal|center"
-            android:text="@string/buttonHelp"
-            android:textSize="20dp"
-            android:background="@color/colorAccent2"
-            android:layout_marginBottom="48dp"/>
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_marginBottom="24dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text=">"
+                android:id="@+id/txtViewArrow3"
+                android:layout_gravity="center_vertical"
+                android:textColor="@color/colorRed1"
+                android:textSize="30sp" />
+            <Button
+                android:id="@+id/buttonHelp"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:background="@color/colorAccent2"
+                android:text="@string/buttonHelp"
+                android:textSize="20dp" />
+        </LinearLayout>
+
     </LinearLayout>
 
 </LinearLayout>

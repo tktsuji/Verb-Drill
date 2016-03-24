@@ -9,7 +9,7 @@ public class WordBank {
     private static final Verb[] regArVerbs = {
            new Verb("arrive", "llegar"),
            new Verb("help", "ayudar"),
-           new Verb("listen", "escuhar"),
+           new Verb("listen", "escuchar"),
            new Verb("speak", "hablar"),
            new Verb("work", "trabajar")
 

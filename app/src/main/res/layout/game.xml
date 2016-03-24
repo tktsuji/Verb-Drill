@@ -51,7 +51,8 @@
         android:layout_below="@+id/txtViewEngPhrase"
         android:layout_toLeftOf="@+id/txtViewPeriod"
         android:layout_toStartOf="@+id/txtViewPeriod"
-        android:textSize="22sp" />
+        android:textSize="22sp"
+        android:maxLength="20" />
 
     <TextView
         android:layout_width="215dp"
@@ -82,14 +83,39 @@
         android:text="@string/buttonGo"
         android:id="@+id/buttonGo"
         android:onClick="onButtonPress"
-        android:layout_marginRight="33dp"
-        android:layout_marginEnd="33dp"
-        android:layout_centerVertical="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
+        android:layout_marginRight="34dp"
+        android:layout_marginEnd="34dp"
         android:background="@color/colorGreen1"
         android:textColor="#000000"
-        android:layout_marginBottom="40dp"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txtViewStreak"
+        android:id="@+id/txtViewStreak"
+        android:textSize="50sp"
+        android:textColor="#000000"
+        android:textIsSelectable="false"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/txtViewSpSubject"
+        android:layout_alignStart="@+id/txtViewSpSubject"
+        android:layout_marginBottom="83dp"
+        android:layout_marginLeft="16dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txtViewStreakNum"
+        android:id="@+id/txtViewStreakNum"
+        android:layout_toRightOf="@+id/txtViewStreak"
+        android:layout_alignBottom="@+id/txtViewStreak"
+        android:textSize="30sp"
+        android:textIsSelectable="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="20dp" />
 
 </RelativeLayout>

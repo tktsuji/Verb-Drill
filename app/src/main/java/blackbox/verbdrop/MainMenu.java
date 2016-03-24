@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class MainMenu extends AppCompatActivity {
 
@@ -22,6 +23,12 @@ public class MainMenu extends AppCompatActivity {
         Button startBtn = (Button) findViewById(R.id.buttonStart);
         Button settingsBtn = (Button) findViewById(R.id.buttonSettings);
         Button helpBtn = (Button) findViewById(R.id.buttonHelp);
+        TextView arrow1 = (TextView) findViewById(R.id.txtViewArrow);
+        TextView arrow2 = (TextView) findViewById(R.id.txtViewArrow2);
+        TextView arrow3 = (TextView) findViewById(R.id.txtViewArrow3);
+        arrow1.setTypeface(tf);
+        arrow2.setTypeface(tf);
+        arrow3.setTypeface(tf);
         startBtn.setTypeface(tf);
         settingsBtn.setTypeface(tf);
         helpBtn.setTypeface(tf);
