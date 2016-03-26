@@ -2,12 +2,14 @@ package blackbox.verbdrop;
 
 
 import android.app.Activity;
+import android.content.Context;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.TranslateAnimation;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
@@ -25,25 +27,28 @@ public class Game extends Activity {
     private Verb randVerb;
     private int numOfVerbs;
     private int randSubjIndx;
+    private int streak;
     private static final String[] ENG_SUBJECTS = {
             "I", "You", "You",
             "He", "She", "We",
             "You all", "They", "They"
     };
     private static final String[] SP_SUBJECTS = {
-            "Yo", "Tu", "Usted",
-            "El", "Ella", "Nosotros",
+            "Yo", "T\u00FA", "Usted",
+            "\u00C9l", "Ella", "Nosotros",
             "Ustedes", "Ellos", "Ellas"
     };
 
     private Button buttonGo;
     private EditText answer;
-    private TextView promptTV, engPhraseTV, spSubjTV, finalAnswerTV, streakTV, gameOverTV;
+    private TextView promptTV, engPhraseTV, spSubjTV, finalAnswerTV, streakNumTV, gameOverTV;
+    private TTSManager ttsManager;
     private Typeface tf;
 
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game);
+        streak = 0;
         verbList = wordBank.getAllVerbs();
         numOfVerbs = wordBank.getNumWords();
         tf = Typeface.createFromAsset(getAssets(), "fonts/chalkboard-bold.ttf");
@@ -57,7 +62,9 @@ public class Game extends Activity {
         spSubjTV.setTypeface(tf);
         answer = (EditText) findViewById(R.id.editTxtAnswer);
         finalAnswerTV = (TextView) findViewById(R.id.txtViewFinalAnswer);
-        streakTV = (TextView) findViewById(R.id.txtViewStreak);
+        streakNumTV = (TextView) findViewById(R.id.txtViewStreakNum);
+        ttsManager = new TTSManager();
+        ttsManager.init(this);
     }
 
      protected void onStart() {
@@ -87,32 +94,39 @@ public class Game extends Activity {
         spSubjTV.setText(spSubject);
     }
 
-    public void onButtonPress(View v) {
+    public void onGo(View v) {
+        View view = this.getCurrentFocus();
+        if (view != null) {
+            InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
         String userAnswer = answer.getText().toString();
         if (isAnswerCorrect(userAnswer)) {
             finalAnswerTV.setText(userAnswer);
             answer.setText("");
+            ttsManager.initQueue(SP_SUBJECTS[randSubjIndx] + userAnswer);
             Animation animation=new TranslateAnimation(0,0,0,4000);
             animation.setDuration(2000);
             finalAnswerTV.startAnimation(animation);
             finalAnswerTV.setVisibility(View.INVISIBLE);
+            ++streak;
+            streakNumTV.setText(Integer.toString(streak));
+            generatePhrase();
         }
         else {
             setContentView(R.layout.game_over);
             gameOverTV = (TextView) findViewById(R.id.txtViewOver);
-            TextView correctAnsw = (TextView) findViewById(R.id.txtViewCorrect2);
-            TextView yourResponse = (TextView) findViewById(R.id.txtViewYourResponse2);
-            TextView streak = (TextView) findViewById(R.id.txtViewStreak2);
+            TextView correctAnswTV = (TextView) findViewById(R.id.txtViewCorrect2);
+            TextView yourResponseTV = (TextView) findViewById(R.id.txtViewYourResponse2);
+            TextView streakTV = (TextView) findViewById(R.id.txtViewStreak2);
             gameOverTV.setTypeface(tf);
-            correctAnsw.setTypeface(tf);
-            yourResponse.setTypeface(tf);
-            streak.setTypeface(tf);
-
-            correctAnsw.setText(SP_SUBJECTS[randSubjIndx] + " " + getCorrectAnswer());
-            yourResponse.setText(SP_SUBJECTS[randSubjIndx] + " " + userAnswer);
-            //streak.setText()
+            correctAnswTV.setTypeface(tf);
+            yourResponseTV.setTypeface(tf);
+            streakTV.setTypeface(tf);
+            correctAnswTV.setText(SP_SUBJECTS[randSubjIndx] + " " + getCorrectAnswer());
+            yourResponseTV.setText(SP_SUBJECTS[randSubjIndx] + " " + userAnswer);
+            streakTV.setText(Integer.toString(streak));
         }
-
     }
 
     private boolean isAnswerCorrect(String userAnswer) {
@@ -137,5 +151,11 @@ public class Game extends Activity {
         else
             correctAnswer = randVerb.getUstedesForm();
         return correctAnswer;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        ttsManager.shutDown();
     }
 }

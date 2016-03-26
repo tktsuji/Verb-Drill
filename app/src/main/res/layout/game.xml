@@ -82,7 +82,7 @@
         android:layout_height="wrap_content"
         android:text="@string/buttonGo"
         android:id="@+id/buttonGo"
-        android:onClick="onButtonPress"
+        android:onClick="onGo"
         android:layout_marginRight="34dp"
         android:layout_marginEnd="34dp"
         android:background="@color/colorGreen1"
@@ -97,14 +97,14 @@
         android:layout_height="wrap_content"
         android:text="@string/txtViewStreak"
         android:id="@+id/txtViewStreak"
-        android:textSize="50sp"
+        android:textSize="30sp"
         android:textColor="#000000"
         android:textIsSelectable="false"
         android:layout_alignParentBottom="true"
-        android:layout_alignLeft="@+id/txtViewSpSubject"
-        android:layout_alignStart="@+id/txtViewSpSubject"
-        android:layout_marginBottom="83dp"
-        android:layout_marginLeft="16dp" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="18dp"
+        android:layout_marginBottom="18dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -114,8 +114,7 @@
         android:layout_toRightOf="@+id/txtViewStreak"
         android:layout_alignBottom="@+id/txtViewStreak"
         android:textSize="30sp"
-        android:textIsSelectable="true"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="20dp" />
+        android:layout_marginLeft="20dp"
+        android:textColor="#000000" />
 
 </RelativeLayout>
