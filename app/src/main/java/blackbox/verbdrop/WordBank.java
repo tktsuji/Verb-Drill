@@ -1,35 +1,46 @@
 package blackbox.verbdrop;
 
+import java.security.acl.Group;
+
 /**
  * Created by tricia on 3/21/16.
  */
 public class WordBank {
     private static int numWords;
-   // Regular -ar verbs
-    private static final Verb[] regArVerbs = {
-           new Verb("arrive", "llegar"),
-           new Verb("help", "ayudar"),
-           new Verb("listen", "escuchar"),
-           new Verb("speak", "hablar"),
-           new Verb("work", "trabajar")
 
+    private static final Verb[] Group1Present = {
+            new IrregVerbPres  ("be", "ser", "soy", "eres", "es", "somos", "son",
+                                "am", "are", "is", "are", "are"),
+            new RegularVerbPres("eat", "comer"),
+            new RegularVerbPres("help", "ayudar"),
+            new RegularVerbPres("listen", "escuchar"),
+            new RegularVerbPres("live", "vivir"),
+            new RegularVerbPres("read", "leer"),
+            new RegularVerbPres("run", "correr"),
+            new RegularVerbPres("speak", "hablar"),
+            new IrregVerbPres  ("see", "ver", "veo", "ves", "ve", "vemos", "ven"),
+            new IrregVerbPres("think", "pensar", "pienso", "piensas", "piensa", "pensamos", "piensan")
    };
 
-    // Regular -er verbs
-    private static final Verb[] regErVerbs = {
-            new Verb("believe", "creer"),
-            new Verb("eat", "comer"),
-            new Verb("read", "leer"),
-            new Verb("run", "correr")
+    private static final Verb[] Group2Present = {
+            new RegularVerbPres("arrive", "llegar"),
+            new RegularVerbPres("believe", "creer"),
+            new RegularVerbPres("call", "llamar"),
+            new RegularVerbPres("carry/wear", "llevar"),
+            new IrregVerbPres  ("go", "ir", "voy", "vas", "va", "vamos", "van",
+                                "go", "go", "goes", "go", "go"),
+            new IrregVerbPres  ("have", "tener", "tengo", "tienes", "tiene", "tenemos", "tienen",
+                                "have", "have", "has", "have", "have"),
+            new RegularVerbPres("pay", "pagar"),
+            new RegularVerbPres("study", "estudiar", "studies"),
+            new IrregVerbPres  ("want", "querer", "quiero", "quieres", "quiere", "queremos", "quieren"),
+            new RegularVerbPres("work", "trabajar")
     };
 
-    // Regular -ir verbs
-    private static final Verb[] regIrVerbs = {
-            new Verb("live", "vivir")
-    };
+
 
     public WordBank() {
-        numWords = regArVerbs.length + regErVerbs.length + regIrVerbs.length;
+        numWords = Group1Present.length + Group2Present.length;
     }
 
     public int getNumWords() {
@@ -40,33 +51,15 @@ public class WordBank {
         Verb[] allVerbs = new Verb[numWords];
         int i;
 
-        for (i = 0; i < regArVerbs.length; i++) {
-            allVerbs[i] = regArVerbs[i];
+        for (i = 0; i < Group1Present.length; i++) {
+            allVerbs[i] = Group1Present[i];
         }
 
-        for (int j = 0; j < regErVerbs.length; j++) {
-            allVerbs[i] = regErVerbs[j];
+        for (int j = 0; j < Group2Present.length; j++) {
+            allVerbs[i] = Group2Present[j];
             ++i;
         }
-
-        for (int k = 0; k < regIrVerbs.length; k++) {
-            allVerbs[i] = regIrVerbs[k];
-            ++i;
-        }
-
         return allVerbs;
-    }
-
-    public Verb[] getRegArVerbs() {
-        return regArVerbs;
-    }
-
-    public Verb[] getRegErVerbs() {
-        return regErVerbs;
-    }
-
-    public Verb[] getRegIrVerbs() {
-        return regIrVerbs;
     }
 
 }

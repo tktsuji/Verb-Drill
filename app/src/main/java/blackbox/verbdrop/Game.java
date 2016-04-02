@@ -7,12 +7,10 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.view.animation.TranslateAnimation;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.Random;
@@ -85,8 +83,16 @@ public class Game extends Activity {
         int randNum2 = rand2.nextInt(numOfVerbs);
         randVerb = verbList[randNum2];
         String engVerb = randVerb.getInEnglish();
-        if (randNum1 == 3 || randNum1 == 4)
-            engVerb = engVerb + "s";
+        if (randNum1 == 0)
+            engVerb = randVerb.getI();
+        else if (randNum1 == 1 || randNum1 == 2 || randNum1 == 6)
+            engVerb = randVerb.getYou();
+        else if (randNum1 == 3 || randNum1 == 4)
+            engVerb = randVerb.getHeShe();
+        else if (randNum1 == 5)
+            engVerb = randVerb.getWe();
+        else
+            engVerb = randVerb.getThey();
 
         // Display phrase
         String phrase = engSubject + " " + engVerb + ".";
@@ -141,15 +147,15 @@ public class Game extends Activity {
     private String getCorrectAnswer() {
         String correctAnswer;
         if (randSubjIndx == 0) // yo form
-            correctAnswer = randVerb.getYoForm();
+            correctAnswer = randVerb.getYo();
         else if (randSubjIndx == 1)
-            correctAnswer = randVerb.getTuForm();
+            correctAnswer = randVerb.getTu();
         else if (randSubjIndx == 2 || randSubjIndx == 3 || randSubjIndx == 4)
-            correctAnswer = randVerb.getUstedForm();
+            correctAnswer = randVerb.getUsted();
         else if (randSubjIndx == 5)
-            correctAnswer = randVerb.getNosotrosForm();
+            correctAnswer = randVerb.getNosotros();
         else
-            correctAnswer = randVerb.getUstedesForm();
+            correctAnswer = randVerb.getUstedes();
         return correctAnswer;
     }
 
