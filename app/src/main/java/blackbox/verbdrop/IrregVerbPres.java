@@ -29,6 +29,7 @@ public class IrregVerbPres extends Verb {
         this.heShe = inEnglish + "s";
         this.we = inEnglish;
         this.they = inEnglish;
+        verbTense = "present";
     }
 
     public IrregVerbPres(String inEnglish, String spInfinitive, String yo, String tu,
@@ -45,6 +46,7 @@ public class IrregVerbPres extends Verb {
         this.heShe = heShe;
         this.we = we;
         this.they = they;
+        verbTense = "present";
     }
 
     public String getYo() {

@@ -9,11 +9,13 @@ public class RegularVerbPres extends Verb {
     public RegularVerbPres(String inEnglish, String spInfinitive) {
         super(inEnglish, spInfinitive);
         this.heShe = inEnglish + "s";
+        verbTense = "present";
     }
 
     public RegularVerbPres(String inEnglish, String spInfinitive, String heShe) {
         super(inEnglish, spInfinitive);
         this.heShe = heShe;
+        verbTense = "present";
     }
 
     public String getYo() {

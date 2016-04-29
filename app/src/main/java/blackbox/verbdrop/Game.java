@@ -39,7 +39,7 @@ public class Game extends Activity {
 
     private Button buttonGo;
     private EditText answer;
-    private TextView promptTV, engPhraseTV, spSubjTV, finalAnswerTV, streakNumTV, gameOverTV;
+    private TextView promptTV, spInfinTV, engPhraseTV, spSubjTV, finalAnswerTV, streakNumTV, gameOverTV;
     private TTSManager ttsManager;
     private Typeface tf;
 
@@ -52,8 +52,10 @@ public class Game extends Activity {
         tf = Typeface.createFromAsset(getAssets(), "fonts/chalkboard-bold.ttf");
         buttonGo = (Button) findViewById(R.id.buttonGo);
         buttonGo.setTypeface(tf);
-        promptTV = (TextView) findViewById(R.id.txtViewPrompt);
-        promptTV.setTypeface(tf);
+        //promptTV = (TextView) findViewById(R.id.txtViewPrompt);
+       // promptTV.setTypeface(tf);
+        spInfinTV = (TextView) findViewById(R.id.txtViewSpInfin);
+        spInfinTV.setTypeface(tf);
         engPhraseTV = (TextView) findViewById(R.id.txtViewEngPhrase);
         engPhraseTV.setTypeface(tf);
         spSubjTV = (TextView) findViewById(R.id.txtViewSpSubject);
@@ -98,6 +100,10 @@ public class Game extends Activity {
         String phrase = engSubject + " " + engVerb + ".";
         engPhraseTV.setText(phrase);
         spSubjTV.setText(spSubject);
+
+        // Display Spanish infinitive and current tense to use
+        String spInfinAndTense = "(" + randVerb.getSpInfinitive() + " - " + randVerb.getVerbTense() + " tense)";
+        spInfinTV.setText(spInfinAndTense.toUpperCase());
     }
 
     public void onGo(View v) {
