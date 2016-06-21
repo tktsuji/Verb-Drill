@@ -16,5 +16,9 @@
     <string name="txtViewCorrect">Correct Answer: </string>
     <string name="txtViewYourResponse">Your Response: </string>
     <string name="txtViewHighStreak">High Streak: </string>
+    <string name="title_activity_settings">Settings</string>
+
+    <string name="selectVerbs">Verb Selection</string>
+    <string name="selectTenses">Tense Selection</string>
 
 </resources>

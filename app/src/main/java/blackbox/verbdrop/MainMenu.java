@@ -69,6 +69,10 @@ public class MainMenu extends AppCompatActivity {
                 startActivity(i);
                 //finish();
                 break;
+            case R.id.buttonSettings :
+                i = new Intent(this, Settings.class);
+                startActivity(i);
+                break;
         }
     }
 }

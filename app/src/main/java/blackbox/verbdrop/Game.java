@@ -3,8 +3,10 @@ package blackbox.verbdrop;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
@@ -46,23 +48,11 @@ public class Game extends Activity {
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game);
+        loadPreferences();
+        setupTextStyle();
         streak = 0;
-        verbList = wordBank.getAllVerbs();
-        numOfVerbs = wordBank.getNumWords();
-        tf = Typeface.createFromAsset(getAssets(), "fonts/chalkboard-bold.ttf");
-        buttonGo = (Button) findViewById(R.id.buttonGo);
-        buttonGo.setTypeface(tf);
-        //promptTV = (TextView) findViewById(R.id.txtViewPrompt);
-       // promptTV.setTypeface(tf);
-        spInfinTV = (TextView) findViewById(R.id.txtViewSpInfin);
-        spInfinTV.setTypeface(tf);
-        engPhraseTV = (TextView) findViewById(R.id.txtViewEngPhrase);
-        engPhraseTV.setTypeface(tf);
-        spSubjTV = (TextView) findViewById(R.id.txtViewSpSubject);
-        spSubjTV.setTypeface(tf);
-        answer = (EditText) findViewById(R.id.editTxtAnswer);
-        finalAnswerTV = (TextView) findViewById(R.id.txtViewFinalAnswer);
-        streakNumTV = (TextView) findViewById(R.id.txtViewStreakNum);
+        //verbList = wordBank.getAllVerbs();
+        //numOfVerbs = wordBank.getNumWords();
         ttsManager = new TTSManager();
         ttsManager.init(this);
     }
@@ -71,40 +61,6 @@ public class Game extends Activity {
          super.onStart();
          generatePhrase();
      }
-
-    public void generatePhrase() {
-        // Get random subject
-        Random rand1 = new Random();
-        int randNum1 = rand1.nextInt(ENG_SUBJECTS.length);
-        String engSubject = ENG_SUBJECTS[randNum1];
-        String spSubject  = SP_SUBJECTS[randNum1];
-        randSubjIndx = randNum1;
-
-        // Get random verb
-        Random rand2 = new Random();
-        int randNum2 = rand2.nextInt(numOfVerbs);
-        randVerb = verbList[randNum2];
-        String engVerb = randVerb.getInEnglish();
-        if (randNum1 == 0)
-            engVerb = randVerb.getI();
-        else if (randNum1 == 1 || randNum1 == 2 || randNum1 == 6)
-            engVerb = randVerb.getYou();
-        else if (randNum1 == 3 || randNum1 == 4)
-            engVerb = randVerb.getHeShe();
-        else if (randNum1 == 5)
-            engVerb = randVerb.getWe();
-        else
-            engVerb = randVerb.getThey();
-
-        // Display phrase
-        String phrase = engSubject + " " + engVerb + ".";
-        engPhraseTV.setText(phrase);
-        spSubjTV.setText(spSubject);
-
-        // Display Spanish infinitive and current tense to use
-        String spInfinAndTense = "(" + randVerb.getSpInfinitive() + " - " + randVerb.getVerbTense() + " tense)";
-        spInfinTV.setText(spInfinAndTense.toUpperCase());
-    }
 
     public void onGo(View v) {
         View view = this.getCurrentFocus();
@@ -141,6 +97,48 @@ public class Game extends Activity {
         }
     }
 
+    public void generatePhrase() {
+        // Get random subject
+        Random rand1 = new Random();
+        int randNum1 = rand1.nextInt(ENG_SUBJECTS.length);
+        String engSubject = ENG_SUBJECTS[randNum1];
+        String spSubject  = SP_SUBJECTS[randNum1];
+        randSubjIndx = randNum1;
+
+        // Get random verb
+        Random rand2 = new Random();
+        int randNum2 = rand2.nextInt(numOfVerbs);
+        System.out.println("RANDNUM2: ");
+        System.out.println(randNum2);
+        randVerb = verbList[randNum2];
+        System.out.println(randVerb.getI());
+        System.out.println(randVerb.getYou());
+        System.out.println(randVerb.getHeShe());
+        System.out.println(randVerb.getWe());
+        System.out.println(randVerb.getThey());
+
+        String engVerb;
+        if (randNum1 == 0)
+            engVerb = randVerb.getI();
+        else if (randNum1 == 1 || randNum1 == 2 || randNum1 == 6)
+            engVerb = randVerb.getYou();
+        else if (randNum1 == 3 || randNum1 == 4)
+            engVerb = randVerb.getHeShe();
+        else if (randNum1 == 5)
+            engVerb = randVerb.getWe();
+        else
+            engVerb = randVerb.getThey();
+
+        // Display phrase
+        String phrase = engSubject + " " + engVerb + ".";
+        engPhraseTV.setText(phrase);
+        spSubjTV.setText(spSubject);
+
+        // Display Spanish infinitive and current tense to use
+        String spInfinAndTense = "(" + randVerb.getSpInfinitive() + " - " + randVerb.getVerbTense() + " tense)";
+        spInfinTV.setText(spInfinAndTense.toUpperCase());
+    }
+
     private boolean isAnswerCorrect(String userAnswer) {
         String correctAnswer = getCorrectAnswer();
         userAnswer = userAnswer.toLowerCase();
@@ -164,6 +162,40 @@ public class Game extends Activity {
             correctAnswer = randVerb.getUstedes();
         return correctAnswer;
     }
+
+    private void setupTextStyle() {
+        tf = Typeface.createFromAsset(getAssets(), "fonts/chalkboard-bold.ttf");
+        buttonGo = (Button) findViewById(R.id.buttonGo);
+        buttonGo.setTypeface(tf);
+        //promptTV = (TextView) findViewById(R.id.txtViewPrompt);
+        // promptTV.setTypeface(tf);
+        spInfinTV = (TextView) findViewById(R.id.txtViewSpInfin);
+        spInfinTV.setTypeface(tf);
+        engPhraseTV = (TextView) findViewById(R.id.txtViewEngPhrase);
+        engPhraseTV.setTypeface(tf);
+        spSubjTV = (TextView) findViewById(R.id.txtViewSpSubject);
+        spSubjTV.setTypeface(tf);
+        answer = (EditText) findViewById(R.id.editTxtAnswer);
+        finalAnswerTV = (TextView) findViewById(R.id.txtViewFinalAnswer);
+        streakNumTV = (TextView) findViewById(R.id.txtViewStreakNum);
+    }
+
+    private void loadPreferences() {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        boolean[] isGroupChecked = new boolean[4];
+        int groupNum = 0;
+        int numSelected = 0;
+        isGroupChecked[groupNum++] = sharedPreferences.getBoolean("group1_key", false);
+        isGroupChecked[groupNum++] = sharedPreferences.getBoolean("group2_key", false);
+        isGroupChecked[groupNum++] = sharedPreferences.getBoolean("group3_key", false);
+        isGroupChecked[groupNum++] = sharedPreferences.getBoolean("group4_key", false);
+        for (int i = 0; i < 4; i++) {
+            if (isGroupChecked[i]) numSelected++;
+        }
+        verbList = wordBank.getSelectedVerbs(isGroupChecked, numSelected);
+        numOfVerbs = verbList.length;
+    }
+
 
     @Override
     public void onDestroy() {

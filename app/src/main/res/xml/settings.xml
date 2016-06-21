@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:title="Verbs">
+        <PreferenceScreen
+        android:key="select_verbs_key"
+        android:title="@string/selectVerbs"
+        android:summary="Select which verbs will appear.">
+            <CheckBoxPreference
+                android:title="Group 1"
+                android:summary="ser, comer, escuchar, vivir hablar"
+                android:key="group1_key"
+                android:defaultValue="true" />
+            <CheckBoxPreference
+                android:title="Group 2"
+                android:summary="ayudar, leer, correr, ver, pensar"
+                android:key="group2_key"
+                android:defaultValue="true" />
+            <CheckBoxPreference
+                android:title="Group 3"
+                android:summary="llegar, creer, llamar, llevar, ir"
+                android:key="group3_key"
+                android:defaultValue="true" />
+            <CheckBoxPreference
+                android:title="Group 4"
+                android:summary="tener, pagar, estudiar, querer, trabajar"
+                android:key="group4_key"
+                android:defaultValue="true" />
+        </PreferenceScreen>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="Tense">
+        <PreferenceScreen
+            android:key="select_tenses_key"
+            android:title="@string/selectTenses"
+            android:summary="Select which tenses and verb forms will appear.">
+        <CheckBoxPreference
+            android:title="Regular Present"
+            android:summary=""
+            android:key="regular_present"
+            android:defaultValue="true" />
+        <CheckBoxPreference
+            android:title="Irregular Present"
+            android:summary=""
+            android:key="irregular_present"
+            android:defaultValue="true" />
+        </PreferenceScreen>
+    </PreferenceCategory>
+
+
+</PreferenceScreen>

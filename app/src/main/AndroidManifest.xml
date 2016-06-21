@@ -19,11 +19,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".Game"
             android:configChanges="orientation"
             android:screenOrientation="portrait" />
+        <activity android:name=".Settings"
+            android:label="Settings"
+            android:screenOrientation="portrait">
+        </activity>
     </application>
 
 </manifest>
