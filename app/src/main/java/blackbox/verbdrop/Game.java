@@ -182,6 +182,8 @@ public class Game extends Activity {
 
     private void loadPreferences() {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+
+        // LOAD PREFERENCES FOR WHICH VERB GROUPS WILL APPEAR IN THE GAME.
         boolean[] isGroupChecked = new boolean[4];
         int groupNum = 0;
         int numSelected = 0;
@@ -189,11 +191,17 @@ public class Game extends Activity {
         isGroupChecked[groupNum++] = sharedPreferences.getBoolean("group2_key", false);
         isGroupChecked[groupNum++] = sharedPreferences.getBoolean("group3_key", false);
         isGroupChecked[groupNum++] = sharedPreferences.getBoolean("group4_key", false);
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 4; i++)
             if (isGroupChecked[i]) numSelected++;
-        }
         verbList = wordBank.getSelectedVerbs(isGroupChecked, numSelected);
+
+        // LOAD PREFERENCES FOR WHICH VERB TENSES AND FORMS WILL APPEAR IN THE GAME.
+        boolean isRegPres   = sharedPreferences.getBoolean("regular_present", true);
+        boolean isIrregPres = sharedPreferences.getBoolean("irregular_present", true);
+        verbList = wordBank.removeTense(verbList, isRegPres, isIrregPres);
+
         numOfVerbs = verbList.length;
+        System.out.println(numOfVerbs);
     }
 
 

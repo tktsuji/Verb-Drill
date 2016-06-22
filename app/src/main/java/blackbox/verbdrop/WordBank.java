@@ -1,6 +1,7 @@
 package blackbox.verbdrop;
 
 import java.security.acl.Group;
+import java.util.ArrayList;
 
 /**
  * Created by tricia on 3/21/16.
@@ -85,11 +86,22 @@ public class WordBank {
         int v = 0;
         for (int i = 0; i < NUM_GROUPS; i++) {
             if (isSelected[i]) {
-                for (int j = i * NUM_VERBS_PER_GROUP; j < i * NUM_VERBS_PER_GROUP + NUM_VERBS_PER_GROUP; j++) 
+                for (int j = i * NUM_VERBS_PER_GROUP; j < i * NUM_VERBS_PER_GROUP + NUM_VERBS_PER_GROUP; j++)
                     selectedVerbs[v++] = allVerbs[j];
             }
         }
         return selectedVerbs;
+    }
+
+    public Verb[] removeTense(Verb[] verbList, boolean isRegPres, boolean isIrregPres) {
+        ArrayList<Verb> newList = new ArrayList<Verb>();
+        for (int i = 0; i < verbList.length; i++) {
+            if (verbList[i].getClass().toString().equals("class blackbox.verbdrop.RegularVerbPres") && isRegPres)
+                newList.add(verbList[i]);
+            if (verbList[i].getClass().toString().equals("class blackbox.verbdrop.IrregVerbPres") && isIrregPres)
+                newList.add(verbList[i]);
+        }
+        return newList.toArray(new Verb[newList.size()]);
     }
 
 }
