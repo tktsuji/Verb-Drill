@@ -108,14 +108,7 @@ public class Game extends Activity {
         // Get random verb
         Random rand2 = new Random();
         int randNum2 = rand2.nextInt(numOfVerbs);
-        System.out.println("RANDNUM2: ");
-        System.out.println(randNum2);
         randVerb = verbList[randNum2];
-        System.out.println(randVerb.getI());
-        System.out.println(randVerb.getYou());
-        System.out.println(randVerb.getHeShe());
-        System.out.println(randVerb.getWe());
-        System.out.println(randVerb.getThey());
 
         String engVerb;
         if (randNum1 == 0)
@@ -201,7 +194,6 @@ public class Game extends Activity {
         verbList = wordBank.removeTense(verbList, isRegPres, isIrregPres);
 
         numOfVerbs = verbList.length;
-        System.out.println(numOfVerbs);
     }
 
 
