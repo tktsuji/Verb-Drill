@@ -5,6 +5,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
+import android.media.AudioManager;
+import android.media.SoundPool;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
@@ -45,14 +47,17 @@ public class Game extends Activity {
     private TTSManager ttsManager;
     private Typeface tf;
 
+    private SoundPool sounds;
+    private int sndwhoosh;
+
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game);
         loadPreferences();
         setupTextStyle();
+        sounds = new SoundPool(10, AudioManager.STREAM_MUSIC,0);
+        sndwhoosh = sounds.load(this, R.raw.whoosh, 1);
         streak = 0;
-        //verbList = wordBank.getAllVerbs();
-        //numOfVerbs = wordBank.getNumWords();
         ttsManager = new TTSManager();
         ttsManager.init(this);
     }
@@ -72,8 +77,9 @@ public class Game extends Activity {
         if (isAnswerCorrect(userAnswer)) {
             finalAnswerTV.setText(userAnswer);
             answer.setText("");
+            sounds.play(sndwhoosh, 1.0f, 1.0f, 0, 0, 1.5f);
             ttsManager.initQueue(SP_SUBJECTS[randSubjIndx] + userAnswer);
-            Animation animation=new TranslateAnimation(0,0,0,4000);
+            Animation animation= new TranslateAnimation(0,0,0,1000);
             animation.setDuration(2000);
             finalAnswerTV.startAnimation(animation);
             finalAnswerTV.setVisibility(View.INVISIBLE);

@@ -1,18 +1,18 @@
 package blackbox.verbdrop;
 
 /**
- * Created by tricia on 3/21/16.
+ * Regular Present Indicative
  */
-public class RegularVerbPres extends Verb {
+public class RegVerbPresent extends Verb {
     private String heShe;
 
-    public RegularVerbPres(String inEnglish, String spInfinitive) {
+    public RegVerbPresent(String inEnglish, String spInfinitive) {
         super(inEnglish, spInfinitive);
         this.heShe = inEnglish + "s";
         verbTense = "present";
     }
 
-    public RegularVerbPres(String inEnglish, String spInfinitive, String heShe) {
+    public RegVerbPresent(String inEnglish, String spInfinitive, String heShe) {
         super(inEnglish, spInfinitive);
         this.heShe = heShe;
         verbTense = "present";
