@@ -1,7 +1,7 @@
 package blackbox.verbdrop;
 
 /**
- * Created by tricia on 3/27/16.
+ * Abstract class for Verb objects
  */
 public abstract class Verb {
     protected String inEnglish;

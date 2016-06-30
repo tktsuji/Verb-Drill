@@ -32,6 +32,23 @@ public class IrregVerbPreterite extends Verb {
         verbTense = "preterite";
     }
 
+    public IrregVerbPreterite(String inEnglish, String spInfinitive, String yo, String tu,
+                            String usted, String nosotros, String ustedes, String I, String you,
+                            String heShe, String we, String they) {
+        super(inEnglish, spInfinitive);
+        this.yo = yo;
+        this.tu = tu;
+        this.usted = usted;
+        this.nosotros = nosotros;
+        this.ustedes = ustedes;
+        this.I = I;
+        this.you = you;
+        this.heShe = heShe;
+        this.we = we;
+        this.they = they;
+        verbTense = "preterite";
+    }
+
     public String getYo() {
         return yo;
     }

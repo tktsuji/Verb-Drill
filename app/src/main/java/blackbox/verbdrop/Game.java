@@ -20,7 +20,7 @@ import android.widget.TextView;
 import java.util.Random;
 
 /**
- * Created by tricia on 3/21/16.
+ *  Translate from English to Spanish by filling in the blank with the correct verb.
  */
 
 public class Game extends Activity {
@@ -138,15 +138,6 @@ public class Game extends Activity {
         spInfinTV.setText(spInfinAndTense.toUpperCase());
     }
 
-    private boolean isAnswerCorrect(String userAnswer) {
-        String correctAnswer = getCorrectAnswer();
-        userAnswer = userAnswer.toLowerCase();
-        if (userAnswer.equals(correctAnswer))
-            return true;
-        else
-            return false;
-    }
-
     private String getCorrectAnswer() {
         String correctAnswer;
         if (randSubjIndx == 0) // yo form
@@ -160,6 +151,15 @@ public class Game extends Activity {
         else
             correctAnswer = randVerb.getUstedes();
         return correctAnswer;
+    }
+
+    private boolean isAnswerCorrect(String userAnswer) {
+        String correctAnswer = getCorrectAnswer();
+        userAnswer = userAnswer.toLowerCase();
+        if (userAnswer.equals(correctAnswer))
+            return true;
+        else
+            return false;
     }
 
     private void setupTextStyle() {
@@ -197,12 +197,36 @@ public class Game extends Activity {
         // LOAD PREFERENCES FOR WHICH VERB TENSES AND FORMS WILL APPEAR IN THE GAME.
         boolean isRegPres   = sharedPreferences.getBoolean("regular_present", true);
         boolean isIrregPres = sharedPreferences.getBoolean("irregular_present", true);
-        verbList = wordBank.removeTense(verbList, isRegPres, isIrregPres);
-
+        boolean isRegPret   = sharedPreferences.getBoolean("regular_preterite", true);
+        boolean isIrregPret = sharedPreferences.getBoolean("irregular_preterite", true);
+        verbList = wordBank.removeTense(verbList, isRegPres, isIrregPres, isRegPret, isIrregPret);
         numOfVerbs = verbList.length;
     }
 
+    public void onA(View v) {
+        answer.append("\u00E1");
+    }
 
+    public void onE(View v) {
+        answer.append("\u00E9");
+    }
+
+    public void onI(View v) {
+        answer.append("\u00ED");
+    }
+
+    public void onO(View v) {
+        answer.append("\u00F3");
+    }
+
+    public void onU(View v) {
+        answer.append("\u00FA");
+    }
+
+    public void onN(View v) {
+        answer.append("\u00F1");
+    }
+    
     @Override
     public void onDestroy() {
         super.onDestroy();

@@ -37,16 +37,26 @@
             android:key="select_tenses_key"
             android:title="@string/selectTenses"
             android:summary="Select which tenses and verb forms will appear.">
-        <CheckBoxPreference
-            android:title="Regular Present"
-            android:summary=""
-            android:key="regular_present"
-            android:defaultValue="true" />
-        <CheckBoxPreference
-            android:title="Irregular Present"
-            android:summary=""
-            android:key="irregular_present"
-            android:defaultValue="true" />
+            <CheckBoxPreference
+                android:title="Regular Present"
+                android:summary=""
+                android:key="regular_present"
+                android:defaultValue="true" />
+            <CheckBoxPreference
+                android:title="Irregular Present"
+                android:summary=""
+                android:key="irregular_present"
+                android:defaultValue="true" />
+            <CheckBoxPreference
+                android:title="Regular Preterite"
+                android:summary=""
+                android:key="regular_preterite"
+                android:defaultValue="true" />
+            <CheckBoxPreference
+                android:title="Irregular Preterite"
+                android:summary=""
+                android:key="irregular_preterite"
+                android:defaultValue="true" />
         </PreferenceScreen>
     </PreferenceCategory>
 
