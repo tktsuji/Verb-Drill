@@ -14,9 +14,14 @@ import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.Chronometer;
 import android.widget.EditText;
+import android.widget.ExpandableListView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -40,21 +45,37 @@ public class Game extends Activity {
             "\u00C9l", "Ella", "Nosotros",
             "Ustedes", "Ellos", "Ellas"
     };
+    private boolean[] isGroupChecked = new boolean[4];
 
     private Button buttonGo;
     private EditText answer;
-    private TextView promptTV, spInfinTV, engPhraseTV, spSubjTV, finalAnswerTV, streakNumTV, gameOverTV;
+    private TextView spInfinTV, engPhraseTV, spSubjTV, finalAnswerTV, streakNumTV,
+                     gameOverTV, streakTV, verbsInPlayTV, verbsInPlayNumTV, timeTV;
     private TTSManager ttsManager;
+    private SharedPreferences sharedPreferences;
     private Typeface tf;
 
     private SoundPool sounds;
     private int sndwhoosh;
+
+    private Chronometer timer;
+
+    private ExpandableListAdapter listAdapter;
+    private ExpandableListView expListView;
+    List<String> listDataHeader;
+    HashMap<String, List<String>> listDataChild;
 
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game);
         loadPreferences();
         setupTextStyle();
+        expListView = (ExpandableListView) findViewById(R.id.lvExp);
+        prepareListData();
+        listAdapter = new ExpandableListAdapter(this, listDataHeader, listDataChild);
+        expListView.setAdapter(listAdapter);
+        timer = (Chronometer) findViewById(R.id.chronometer1);
+        timer.start();
         sounds = new SoundPool(10, AudioManager.STREAM_MUSIC,0);
         sndwhoosh = sounds.load(this, R.raw.whoosh, 1);
         streak = 0;
@@ -166,8 +187,6 @@ public class Game extends Activity {
         tf = Typeface.createFromAsset(getAssets(), "fonts/chalkboard-bold.ttf");
         buttonGo = (Button) findViewById(R.id.buttonGo);
         buttonGo.setTypeface(tf);
-        //promptTV = (TextView) findViewById(R.id.txtViewPrompt);
-        // promptTV.setTypeface(tf);
         spInfinTV = (TextView) findViewById(R.id.txtViewSpInfin);
         spInfinTV.setTypeface(tf);
         engPhraseTV = (TextView) findViewById(R.id.txtViewEngPhrase);
@@ -176,14 +195,16 @@ public class Game extends Activity {
         spSubjTV.setTypeface(tf);
         answer = (EditText) findViewById(R.id.editTxtAnswer);
         finalAnswerTV = (TextView) findViewById(R.id.txtViewFinalAnswer);
+        streakTV = (TextView) findViewById(R.id.txtViewStreak);
+        streakTV.setTypeface(tf);
         streakNumTV = (TextView) findViewById(R.id.txtViewStreakNum);
+        timeTV = (TextView)findViewById(R.id.txtViewTime);
+        timeTV.setTypeface(tf);
     }
 
     private void loadPreferences() {
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-
+        sharedPreferences =  PreferenceManager.getDefaultSharedPreferences(this);
         // LOAD PREFERENCES FOR WHICH VERB GROUPS WILL APPEAR IN THE GAME.
-        boolean[] isGroupChecked = new boolean[4];
         int groupNum = 0;
         int numSelected = 0;
         isGroupChecked[groupNum++] = sharedPreferences.getBoolean("group1_key", false);
@@ -201,6 +222,36 @@ public class Game extends Activity {
         boolean isIrregPret = sharedPreferences.getBoolean("irregular_preterite", true);
         verbList = wordBank.removeTense(verbList, isRegPres, isIrregPres, isRegPret, isIrregPret);
         numOfVerbs = verbList.length;
+    }
+
+    private void prepareListData() {
+        listDataHeader = new ArrayList<String>();
+        listDataChild = new HashMap<String, List<String>>();
+
+        // Adding child data
+        listDataHeader.add("Verb Groups In Play");
+        listDataHeader.add("Verb Tenses In Play");
+
+        // Adding child data
+        List<String> verbGroupsInPlay = new ArrayList<String>();
+        for (int i = 0; i < 4; i++) {
+            if (isGroupChecked[i]) {
+                verbGroupsInPlay.add("Group " + Integer.toString(i+1));
+            }
+        }
+
+        List<String> verbTensesInPlay = new ArrayList<String>();
+        if (sharedPreferences.getBoolean("regular_present", true))
+            verbTensesInPlay.add("Regular Present");
+        if (sharedPreferences.getBoolean("irregular_present", true))
+            verbTensesInPlay.add("Irregular Present");
+        if (sharedPreferences.getBoolean("regular_preterite", true))
+            verbTensesInPlay.add("Regular Preterite");
+        if (sharedPreferences.getBoolean("irregular_preterite", true))
+            verbTensesInPlay.add("Irregular Preterite");
+
+        listDataChild.put(listDataHeader.get(0), verbGroupsInPlay); // Header, Child data
+        listDataChild.put(listDataHeader.get(1), verbTensesInPlay);
     }
 
     public void onA(View v) {
@@ -226,7 +277,7 @@ public class Game extends Activity {
     public void onN(View v) {
         answer.append("\u00F1");
     }
-    
+
     @Override
     public void onDestroy() {
         super.onDestroy();

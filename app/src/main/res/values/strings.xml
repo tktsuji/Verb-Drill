@@ -11,6 +11,10 @@
     <string name="buttonGo">Go!</string>
     <string name="txtViewStreak">Streak: </string>
     <string name="txtViewStreakNum">0</string>
+    <string name="txtViewTime">Time: </string>
+    <string name="txtViewVerbsInPlay"># of Verbs</string>
+    <string name="txtViewVerbsInPlay2">in Play: </string>
+    <string name="txtViewVerbsInPlayNum">0</string>
 
     <string name="txtViewOver">Whoops!</string>
     <string name="txtViewCorrect">Correct Answer: </string>
