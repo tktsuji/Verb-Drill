@@ -11,7 +11,28 @@
         android:text="@string/txtViewOver"
         android:id="@+id/txtViewOver"
         android:layout_gravity="center_horizontal"
-        android:textSize="52sp" />
+        android:textColor="#000000"
+        android:textSize="52sp"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="10dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/txtViewWordPrompt"
+        android:id="@+id/txtViewPrompt"
+        android:textColor="@color/colorRed1"
+        android:layout_marginLeft="25dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text=" "
+        android:id="@+id/txtViewPrompt2"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="6dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -19,15 +40,17 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/txtViewCorrect"
         android:id="@+id/txtViewCorrect"
-        android:layout_marginLeft="16dp" />
+        android:textColor="@color/colorRed1"
+        android:layout_marginLeft="25dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text=""
+        android:text=" "
         android:id="@+id/txtViewCorrect2"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="6dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -36,15 +59,17 @@
         android:text="@string/txtViewYourResponse"
         android:id="@+id/txtViewYourResponse"
         android:layout_gravity="left"
-        android:layout_marginLeft="16dp" />
+        android:textColor="@color/colorRed1"
+        android:layout_marginLeft="25dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text=""
+        android:text=" "
         android:id="@+id/txtViewYourResponse2"
-        android:layout_gravity="center_horizontal" />
+        android:layout_marginBottom="6dp"
+        android:layout_gravity="center_horizontal"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -52,15 +77,17 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/txtViewStreak"
         android:id="@+id/txtViewStreak"
-        android:layout_marginLeft="16dp" />
+        android:textColor="@color/colorRed1"
+        android:layout_marginLeft="25dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text=""
+        android:text=" "
         android:id="@+id/txtViewStreak2"
-        android:layout_gravity="center_horizontal" />
+        android:layout_marginBottom="6dp"
+        android:layout_gravity="center_horizontal"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -68,14 +95,16 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/txtViewHighStreak"
         android:id="@+id/txtViewHighStreak"
-        android:layout_marginLeft="16dp" />
+        android:textColor="@color/colorRed1"
+        android:layout_marginLeft="25dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text=""
+        android:text=" "
         android:id="@+id/txtViewHighStreak2"
-        android:layout_gravity="center_horizontal" />
+        android:layout_marginBottom="6dp"
+        android:layout_gravity="center_horizontal"/>
 
 </LinearLayout>

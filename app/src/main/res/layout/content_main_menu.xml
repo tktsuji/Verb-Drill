@@ -31,7 +31,7 @@
                 android:id="@+id/buttonStart"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:background="@color/colorAccent2"
+                android:background="@color/colorOffWhite"
                 android:onClick="ButtonOnClick"
                 android:text="@string/buttonStart"
                 android:textSize="20dp"/>
@@ -55,7 +55,7 @@
                 android:id="@+id/buttonSettings"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:background="@color/colorAccent2"
+                android:background="@color/colorOffWhite"
                 android:onClick="ButtonOnClick"
                 android:text="@string/buttonSettings"
                 android:textSize="20dp" />
@@ -80,7 +80,7 @@
                 android:id="@+id/buttonLog"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:background="@color/colorAccent2"
+                android:background="@color/colorOffWhite"
                 android:text="@string/buttonLog"
                 android:textSize="20dp"
                 android:onClick="ButtonOnClick" />

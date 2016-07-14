@@ -17,6 +17,7 @@
     <string name="txtViewVerbsInPlayNum">0</string>
 
     <string name="txtViewOver">Whoops!</string>
+    <string name="txtViewWordPrompt">Prompt: </string>
     <string name="txtViewCorrect">Correct Answer: </string>
     <string name="txtViewYourResponse">Your Response: </string>
     <string name="txtViewHighStreak">High Streak: </string>

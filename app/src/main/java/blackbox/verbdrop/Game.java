@@ -3,6 +3,7 @@ package blackbox.verbdrop;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.media.AudioManager;
@@ -25,7 +26,8 @@ import java.util.List;
 import java.util.Random;
 
 /**
- *  Translate from English to Spanish by filling in the blank with the correct verb.
+ *  Translate from English to Spanish by filling in the blank with the correct
+ *  form of the verb.
  */
 
 public class Game extends Activity {
@@ -45,25 +47,34 @@ public class Game extends Activity {
             "\u00C9l", "Ella", "Nosotros",
             "Ustedes", "Ellos", "Ellas"
     };
-    private boolean[] isGroupChecked = new boolean[4];
+    private String engPhrase;
+    private String correctPhrase;
+    private String userPhrase;
 
+    // BUTTONS AND TEXTS
     private Button buttonGo;
     private EditText answer;
     private TextView spInfinTV, engPhraseTV, spSubjTV, finalAnswerTV, streakNumTV,
-                     gameOverTV, streakTV, verbsInPlayTV, verbsInPlayNumTV, timeTV;
+            streakTV, timeTV;
+
+    // SOUND AND TIME OBJECTS
     private TTSManager ttsManager;
     private SharedPreferences sharedPreferences;
     private Typeface tf;
-
     private SoundPool sounds;
     private int sndwhoosh;
-
     private Chronometer timer;
 
+    // OBJECTS TO MAKE EXPANDABLE LISTS THAT SHOW THE VERBS AND VERB TENSES THAT ARE IN PLAY
     private ExpandableListAdapter listAdapter;
     private ExpandableListView expListView;
     List<String> listDataHeader;
     HashMap<String, List<String>> listDataChild;
+
+    // VALUES THAT WILL BE LOADED FROM PREFERENCES (SETTINGS)
+    private boolean[] isGroupChecked = new boolean[4];
+    private boolean isText2SpeechOn = true;
+    private boolean isSoundFxOn = true;
 
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -95,11 +106,14 @@ public class Game extends Activity {
             imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
         String userAnswer = answer.getText().toString();
+        userPhrase = SP_SUBJECTS[randSubjIndx] + userAnswer;
         if (isAnswerCorrect(userAnswer)) {
             finalAnswerTV.setText(userAnswer);
             answer.setText("");
-            sounds.play(sndwhoosh, 1.0f, 1.0f, 0, 0, 1.5f);
-            ttsManager.initQueue(SP_SUBJECTS[randSubjIndx] + userAnswer);
+            if (isSoundFxOn)
+                sounds.play(sndwhoosh, 1.0f, 1.0f, 0, 0, 1.5f);
+            if (isText2SpeechOn)
+                ttsManager.initQueue(userPhrase);
             Animation animation= new TranslateAnimation(0,0,0,1000);
             animation.setDuration(2000);
             finalAnswerTV.startAnimation(animation);
@@ -109,18 +123,13 @@ public class Game extends Activity {
             generatePhrase();
         }
         else {
-            setContentView(R.layout.game_over);
-            gameOverTV = (TextView) findViewById(R.id.txtViewOver);
-            TextView correctAnswTV = (TextView) findViewById(R.id.txtViewCorrect2);
-            TextView yourResponseTV = (TextView) findViewById(R.id.txtViewYourResponse2);
-            TextView streakTV = (TextView) findViewById(R.id.txtViewStreak2);
-            gameOverTV.setTypeface(tf);
-            correctAnswTV.setTypeface(tf);
-            yourResponseTV.setTypeface(tf);
-            streakTV.setTypeface(tf);
-            correctAnswTV.setText(SP_SUBJECTS[randSubjIndx] + " " + getCorrectAnswer());
-            yourResponseTV.setText(SP_SUBJECTS[randSubjIndx] + " " + userAnswer);
-            streakTV.setText(Integer.toString(streak));
+            Intent i = new Intent(this, GameOverScreen.class);
+            i.putExtra("engPhrase", engPhrase);
+            i.putExtra("correctPhrase", correctPhrase);
+            i.putExtra("userPhrase", userPhrase);
+            i.putExtra("streak", streak);
+            startActivity(i);
+            finish();
         }
     }
 
@@ -150,8 +159,8 @@ public class Game extends Activity {
             engVerb = randVerb.getThey();
 
         // Display phrase
-        String phrase = engSubject + " " + engVerb + ".";
-        engPhraseTV.setText(phrase);
+        engPhrase = engSubject + " " + engVerb + ".";
+        engPhraseTV.setText(engPhrase);
         spSubjTV.setText(spSubject);
 
         // Display Spanish infinitive and current tense to use
@@ -159,7 +168,7 @@ public class Game extends Activity {
         spInfinTV.setText(spInfinAndTense.toUpperCase());
     }
 
-    private String getCorrectAnswer() {
+    public String getCorrectAnswer() {
         String correctAnswer;
         if (randSubjIndx == 0) // yo form
             correctAnswer = randVerb.getYo();
@@ -171,10 +180,11 @@ public class Game extends Activity {
             correctAnswer = randVerb.getNosotros();
         else
             correctAnswer = randVerb.getUstedes();
+        correctPhrase = SP_SUBJECTS[randSubjIndx] + " " + correctAnswer;
         return correctAnswer;
     }
 
-    private boolean isAnswerCorrect(String userAnswer) {
+    public boolean isAnswerCorrect(String userAnswer) {
         String correctAnswer = getCorrectAnswer();
         userAnswer = userAnswer.toLowerCase();
         if (userAnswer.equals(correctAnswer))
@@ -183,7 +193,7 @@ public class Game extends Activity {
             return false;
     }
 
-    private void setupTextStyle() {
+    public void setupTextStyle() {
         tf = Typeface.createFromAsset(getAssets(), "fonts/chalkboard-bold.ttf");
         buttonGo = (Button) findViewById(R.id.buttonGo);
         buttonGo.setTypeface(tf);
@@ -202,7 +212,7 @@ public class Game extends Activity {
         timeTV.setTypeface(tf);
     }
 
-    private void loadPreferences() {
+    public void loadPreferences() {
         sharedPreferences =  PreferenceManager.getDefaultSharedPreferences(this);
         // LOAD PREFERENCES FOR WHICH VERB GROUPS WILL APPEAR IN THE GAME.
         int groupNum = 0;
@@ -222,9 +232,13 @@ public class Game extends Activity {
         boolean isIrregPret = sharedPreferences.getBoolean("irregular_preterite", true);
         verbList = wordBank.removeTense(verbList, isRegPres, isIrregPres, isRegPret, isIrregPret);
         numOfVerbs = verbList.length;
+
+        // LOAD PREFERENCES FOR SOUNDS
+        isText2SpeechOn = sharedPreferences.getBoolean("text_to_speech", true);
+        isSoundFxOn = sharedPreferences.getBoolean("sound_fx", true);
     }
 
-    private void prepareListData() {
+    public void prepareListData() {
         listDataHeader = new ArrayList<String>();
         listDataChild = new HashMap<String, List<String>>();
 

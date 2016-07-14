@@ -2,11 +2,11 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
     <PreferenceCategory
-        android:title="Verbs">
+        android:title="Verb Settings">
         <PreferenceScreen
         android:key="select_verbs_key"
         android:title="@string/selectVerbs"
-        android:summary="Select which verbs will appear.">
+        android:summary="Turn verbs on/off.">
             <CheckBoxPreference
                 android:title="Group 1"
                 android:summary="ser, comer, escuchar, vivir hablar"
@@ -28,15 +28,10 @@
                 android:key="group4_key"
                 android:defaultValue="true" />
         </PreferenceScreen>
-
-    </PreferenceCategory>
-
-    <PreferenceCategory
-        android:title="Tense">
         <PreferenceScreen
             android:key="select_tenses_key"
             android:title="@string/selectTenses"
-            android:summary="Select which tenses and verb forms will appear.">
+            android:summary="Turn tenses on/off. Choose if you want irregular verb forms to appear.">
             <CheckBoxPreference
                 android:title="Regular Present"
                 android:summary=""
@@ -60,5 +55,18 @@
         </PreferenceScreen>
     </PreferenceCategory>
 
+    <PreferenceCategory
+        android:title="Sound Settings">
+        <CheckBoxPreference
+            android:title="Text-To-Speech"
+            android:summary="Have each verb phrase read aloud."
+            android:key="text_to_speech"
+            android:defaultValue="true" />
+        <CheckBoxPreference
+            android:title="Sound FX"
+            android:summary="Play sound effects."
+            android:key="sound_fx"
+            android:defaultValue="true" />
+    </PreferenceCategory>
 
 </PreferenceScreen>
