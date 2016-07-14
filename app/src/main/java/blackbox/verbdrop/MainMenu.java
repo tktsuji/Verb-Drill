@@ -22,7 +22,7 @@ public class MainMenu extends AppCompatActivity {
         Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/chalkboard-bold.ttf");
         Button startBtn = (Button) findViewById(R.id.buttonStart);
         Button settingsBtn = (Button) findViewById(R.id.buttonSettings);
-        Button helpBtn = (Button) findViewById(R.id.buttonHelp);
+        Button helpBtn = (Button) findViewById(R.id.buttonLog);
         TextView arrow1 = (TextView) findViewById(R.id.txtViewArrow);
         TextView arrow2 = (TextView) findViewById(R.id.txtViewArrow2);
         TextView arrow3 = (TextView) findViewById(R.id.txtViewArrow3);
@@ -51,7 +51,9 @@ public class MainMenu extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_help) {
+            Intent i = new Intent(this, Help.class);
+            startActivity(i);
             return true;
         }
 
@@ -71,6 +73,10 @@ public class MainMenu extends AppCompatActivity {
                 break;
             case R.id.buttonSettings :
                 i = new Intent(this, Settings.class);
+                startActivity(i);
+                break;
+            case R.id.buttonLog :
+                i = new Intent(this, UserLog.class);
                 startActivity(i);
                 break;
         }

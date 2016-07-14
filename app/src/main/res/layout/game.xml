@@ -194,8 +194,7 @@
         android:textColor="@color/colorRed1"
         android:layout_marginTop="70dp"
         android:layout_below="@+id/buttonLayout"
-        android:layout_toLeftOf="@+id/txtViewEngPhrase"
-        android:layout_toStartOf="@+id/txtViewEngPhrase" />
+        android:layout_alignLeft="@+id/txtViewSpInfin"/>
 
     <TextView
         android:layout_width="wrap_content"

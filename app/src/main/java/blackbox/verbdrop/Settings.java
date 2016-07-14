@@ -10,7 +10,6 @@ public class Settings extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings);
         FragmentManager fragmentManager = getFragmentManager();
@@ -18,7 +17,6 @@ public class Settings extends AppCompatActivity {
         SettingsFragment settingsFragment = new SettingsFragment();
         fragmentTransaction.add(android.R.id.content, settingsFragment, "SETTINGS_FRAG");
         fragmentTransaction.commit();
-
     }
 
     public static class SettingsFragment extends PreferenceFragment {

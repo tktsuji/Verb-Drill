@@ -27,6 +27,11 @@
             android:label="Settings"
             android:screenOrientation="portrait">
         </activity>
+        <activity
+            android:name=".UserLog"
+            android:screenOrientation="portrait" />
+        <activity android:name=".Help"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
