@@ -5,6 +5,12 @@
     <string name="buttonSettings">Settings</string>
     <string name="buttonLog">Log</string>
 
+    <string name="txtViewModeSelection">Select Mode:</string>
+    <string name="txtViewFillBlank">Fill-in-the-Blank</string>
+    <string name="txtViewMC">Multiple Choice</string>
+    <string name="txtViewNote">Note: For each mode, translate from English to Spanish. You can go to Settings to select
+                                which verbs and verb tenses will appear.</string>
+
     <string name="txtViewPrompt">Translate to Spanish:</string>
     <string name="txtViewEngPhrase">Eng</string>
     <string name="txtViewSpSubj">SpSubj</string>

@@ -67,7 +67,7 @@ public class MainMenu extends AppCompatActivity {
         switch (v.getId())
         {
             case R.id.buttonStart :
-                i = new Intent(this, Game.class);
+                i = new Intent(this, GameModeSelection.class);
                 startActivity(i);
                 //finish();
                 break;

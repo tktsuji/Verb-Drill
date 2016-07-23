@@ -108,7 +108,7 @@ public class Game extends Activity {
             imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
         String userAnswer = answer.getText().toString();
-        userPhrase = SP_SUBJECTS[randSubjIndx] + userAnswer;
+        userPhrase = SP_SUBJECTS[randSubjIndx] + " " + userAnswer;
         if (isAnswerCorrect(userAnswer)) {
             finalAnswerTV.setText(userAnswer);
             answer.setText("");

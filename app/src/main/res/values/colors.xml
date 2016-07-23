@@ -8,4 +8,5 @@
     <color name="colorRed1">#c42314</color>
     <color name="colorYellow1">#F6EF2A</color>
     <color name="colorOffWhite">#FDFDFD</color>
+    <color name="indicator">#ecd95a</color>
 </resources>
