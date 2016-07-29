@@ -1,7 +1,7 @@
 package blackbox.verbdrop;
 
 /**
- *  Regular Preterite
+ *  Regular Preterite Indiciative
  */
 public class RegVerbPreterite extends Verb {
     public RegVerbPreterite(String inEnglish, String spInfinitive) {

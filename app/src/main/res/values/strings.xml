@@ -5,7 +5,6 @@
     <string name="buttonSettings">Settings</string>
     <string name="buttonLog">Log</string>
 
-    <string name="txtViewModeSelection">Select Mode:</string>
     <string name="txtViewFillBlank">Fill-in-the-Blank</string>
     <string name="txtViewMC">Multiple Choice</string>
     <string name="txtViewNote">Note: For each mode, translate from English to Spanish. You can go to Settings to select
@@ -31,5 +30,6 @@
 
     <string name="selectVerbs">Verb Selection</string>
     <string name="selectTenses">Tense Selection</string>
+    <string name="title_activity_multiple_choice">MultipleChoice</string>
 
 </resources>

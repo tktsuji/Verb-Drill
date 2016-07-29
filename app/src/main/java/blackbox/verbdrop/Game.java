@@ -1,8 +1,6 @@
 package blackbox.verbdrop;
 
-
 import android.app.Activity;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -12,13 +10,8 @@ import android.media.SoundPool;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AlertDialog;
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.TranslateAnimation;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.Chronometer;
-import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
 
@@ -28,59 +21,62 @@ import java.util.List;
 import java.util.Random;
 
 /**
- *  Translate from English to Spanish by filling in the blank with the correct
- *  form of the verb.
+ *  Generates a random phrase in English and checks if the user's input is the correct
+ *  Spanish translation. Keeps track of user's streak and time. Loads preferences from user's
+ *  Settings.
  */
-
-public class Game extends Activity {
-    private WordBank wordBank = new WordBank();
-    private Verb[] verbList;
-    private Verb randVerb;
-    private int numOfVerbs;
-    private int randSubjIndx;
-    private int streak;
-    private static final String[] ENG_SUBJECTS = {
+public abstract class Game extends Activity {
+    protected WordBank wordBank = new WordBank();
+    protected Verb randVerb;
+    protected int randSubjIndx;
+    protected int streak;
+    protected static final String[] ENG_SUBJECTS = {
             "I", "You", "You",
             "He", "She", "We",
             "You all", "They", "They"
     };
-    private static final String[] SP_SUBJECTS = {
+    protected static final String[] SP_SUBJECTS = {
             "Yo", "T\u00FA", "Usted",
             "\u00C9l", "Ella", "Nosotros",
             "Ustedes", "Ellos", "Ellas"
     };
-    private String engPhrase;
-    private String correctPhrase;
-    private String userPhrase;
+    protected String engPhrase;     // The phrase to be translated
+    protected String spSubject;     // The Spanish subject of the sentence
+    protected String correctPhrase; // The correct Spanish translation
+    protected String userPhrase;    // The user's inputted response
 
     // BUTTONS AND TEXTS
-    private Button buttonGo;
-    private EditText answer;
-    private TextView spInfinTV, engPhraseTV, spSubjTV, finalAnswerTV, streakNumTV,
+    protected Button buttonGo;
+    protected TextView spInfinTV, engPhraseTV, streakNumTV,
             streakTV, timeTV;
 
-    // SOUND AND TIME OBJECTS
-    private TTSManager ttsManager;
-    private SharedPreferences sharedPreferences;
-    private Typeface tf;
-    private SoundPool sounds;
-    private int sndwhoosh;
-    private Chronometer timer;
+    // FONT, SOUND, AND TIME OBJECTS
+    protected TTSManager ttsManager;
+    protected Typeface tf;
+    protected SoundPool sounds;
+    protected int sndwhoosh;
+    protected Chronometer timer;
 
     // OBJECTS TO MAKE EXPANDABLE LISTS THAT SHOW THE VERBS AND VERB TENSES THAT ARE IN PLAY
-    private ExpandableListAdapter listAdapter;
-    private ExpandableListView expListView;
+    protected ExpandableListAdapter listAdapter;
+    protected ExpandableListView expListView;
     List<String> listDataHeader;
     HashMap<String, List<String>> listDataChild;
 
+    protected SharedPreferences sharedPreferences;
     // VALUES THAT WILL BE LOADED FROM PREFERENCES (SETTINGS)
-    private boolean[] isGroupChecked = new boolean[4];
-    private boolean isText2SpeechOn = true;
-    private boolean isSoundFxOn = true;
+    protected Verb[] verbList;
+    protected int numOfVerbs;
+    protected boolean[] isGroupChecked = new boolean[4];
+    protected boolean isText2SpeechOn = true;
+    protected boolean isSoundFxOn = true;
+
+    abstract void setupUI();
 
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.game);
+        tf = Typeface.createFromAsset(getAssets(), "fonts/chalkboard-bold.ttf");
+        setupUI();
         loadPreferences();
         setupTextStyle();
         expListView = (ExpandableListView) findViewById(R.id.lvExp);
@@ -96,58 +92,26 @@ public class Game extends Activity {
         ttsManager.init(this);
     }
 
-     protected void onStart() {
-         super.onStart();
-         generatePhrase();
-     }
-
-    public void onGo(View v) {
-        View view = this.getCurrentFocus();
-        if (view != null) {
-            InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
-        }
-        String userAnswer = answer.getText().toString();
-        userPhrase = SP_SUBJECTS[randSubjIndx] + " " + userAnswer;
-        if (isAnswerCorrect(userAnswer)) {
-            finalAnswerTV.setText(userAnswer);
-            answer.setText("");
-            if (isSoundFxOn)
-                sounds.play(sndwhoosh, 1.0f, 1.0f, 0, 0, 1.5f);
-            if (isText2SpeechOn)
-                ttsManager.initQueue(userPhrase);
-            Animation animation= new TranslateAnimation(0,0,0,1000);
-            animation.setDuration(2000);
-            finalAnswerTV.startAnimation(animation);
-            finalAnswerTV.setVisibility(View.INVISIBLE);
-            ++streak;
-            streakNumTV.setText(Integer.toString(streak));
-            generatePhrase();
-        }
-        else {
-            Intent i = new Intent(this, GameOverScreen.class);
-            i.putExtra("engPhrase", engPhrase);
-            i.putExtra("correctPhrase", correctPhrase);
-            i.putExtra("userPhrase", userPhrase);
-            i.putExtra("streak", streak);
-            startActivity(i);
-            finish();
-        }
+    protected void onStart() {
+        super.onStart();
+        generatePhrase();
+        displayPhrase();
     }
 
     public void generatePhrase() {
-        // Get random subject
+        // GET RANDOM SUBJECT
         Random rand1 = new Random();
         int randNum1 = rand1.nextInt(ENG_SUBJECTS.length);
         String engSubject = ENG_SUBJECTS[randNum1];
-        String spSubject  = SP_SUBJECTS[randNum1];
+        spSubject  = SP_SUBJECTS[randNum1];
         randSubjIndx = randNum1;
 
-        // Get random verb
+        // GET RANDOM VERB
         Random rand2 = new Random();
         int randNum2 = rand2.nextInt(numOfVerbs);
         randVerb = verbList[randNum2];
 
+        // GET CORRECT ENGLISH FORM OF THE VERB
         String engVerb;
         if (randNum1 == 0)
             engVerb = randVerb.getI();
@@ -159,16 +123,10 @@ public class Game extends Activity {
             engVerb = randVerb.getWe();
         else
             engVerb = randVerb.getThey();
-
-        // Display phrase
         engPhrase = engSubject + " " + engVerb + ".";
-        engPhraseTV.setText(engPhrase);
-        spSubjTV.setText(spSubject);
-
-        // Display Spanish infinitive and current tense to use
-        String spInfinAndTense = "(" + randVerb.getSpInfinitive() + " - " + randVerb.getVerbTense() + " tense)";
-        spInfinTV.setText(spInfinAndTense.toUpperCase());
     }
+
+    abstract void displayPhrase();
 
     public String getCorrectAnswer() {
         String correctAnswer;
@@ -195,18 +153,30 @@ public class Game extends Activity {
             return false;
     }
 
+    public void onIncorrectAnswer() {
+        Intent i = new Intent(this, GameOverScreen.class);
+        i.putExtra("engPhrase", engPhrase);
+        i.putExtra("correctPhrase", correctPhrase);
+        i.putExtra("userPhrase", userPhrase);
+        i.putExtra("streak", streak);
+        startActivity(i);
+        finish();
+    }
+
+    public void playSound() {
+        if (isSoundFxOn)
+            sounds.play(sndwhoosh, 1.0f, 1.0f, 0, 0, 1.5f);
+        if (isText2SpeechOn)
+            ttsManager.initQueue(userPhrase);
+    }
+
     public void setupTextStyle() {
-        tf = Typeface.createFromAsset(getAssets(), "fonts/chalkboard-bold.ttf");
         buttonGo = (Button) findViewById(R.id.buttonGo);
         buttonGo.setTypeface(tf);
         spInfinTV = (TextView) findViewById(R.id.txtViewSpInfin);
         spInfinTV.setTypeface(tf);
         engPhraseTV = (TextView) findViewById(R.id.txtViewEngPhrase);
         engPhraseTV.setTypeface(tf);
-        spSubjTV = (TextView) findViewById(R.id.txtViewSpSubject);
-        spSubjTV.setTypeface(tf);
-        answer = (EditText) findViewById(R.id.editTxtAnswer);
-        finalAnswerTV = (TextView) findViewById(R.id.txtViewFinalAnswer);
         streakTV = (TextView) findViewById(R.id.txtViewStreak);
         streakTV.setTypeface(tf);
         streakNumTV = (TextView) findViewById(R.id.txtViewStreakNum);
@@ -268,30 +238,6 @@ public class Game extends Activity {
 
         listDataChild.put(listDataHeader.get(0), verbGroupsInPlay); // Header, Child data
         listDataChild.put(listDataHeader.get(1), verbTensesInPlay);
-    }
-
-    public void onA(View v) {
-        answer.append("\u00E1");
-    }
-
-    public void onE(View v) {
-        answer.append("\u00E9");
-    }
-
-    public void onI(View v) {
-        answer.append("\u00ED");
-    }
-
-    public void onO(View v) {
-        answer.append("\u00F3");
-    }
-
-    public void onU(View v) {
-        answer.append("\u00FA");
-    }
-
-    public void onN(View v) {
-        answer.append("\u00F1");
     }
 
     @Override

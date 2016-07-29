@@ -13,11 +13,6 @@ import android.widget.TextView;
  *  A fragment for tabbed layout in UserLog that will show hiscore.
  *  Based off code from:
  * https://guides.codepath.com/android/ViewPager-with-FragmentPagerAdapter#layout-viewpager
- *
- * SCORE CALCULATION:
- *         Streak x 50
- *       + Groups x 25
- *       + Tenses x 25
  */
 public class HiscoreFragment extends Fragment {
     private String title;

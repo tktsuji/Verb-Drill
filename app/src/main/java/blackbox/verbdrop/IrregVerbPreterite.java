@@ -1,7 +1,7 @@
 package blackbox.verbdrop;
 
 /**
- * Irregular Preterite
+ * Irregular Preterite Indicative
  */
 public class IrregVerbPreterite extends Verb {
     private String yo;

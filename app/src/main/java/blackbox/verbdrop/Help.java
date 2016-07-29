@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 
 /**
- * Created by tricia on 7/13/16.
+ * Help
  */
 public class Help extends Activity {
     @Override

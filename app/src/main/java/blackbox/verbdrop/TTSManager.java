@@ -6,8 +6,9 @@ import android.util.Log;
 import java.util.Locale;
 
 /**
- * Created by Nilanchala
- * http://www.javatechig.com
+ *  Created by Nilanchala
+ *  http://www.javatechig.com
+ *  To be used for text-to-speech
  */
 
 public class TTSManager {

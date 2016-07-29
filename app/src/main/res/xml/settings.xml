@@ -31,24 +31,24 @@
         <PreferenceScreen
             android:key="select_tenses_key"
             android:title="@string/selectTenses"
-            android:summary="Turn tenses on/off. Choose if you want irregular verb forms to appear.">
+            android:summary="Turn tenses on/off. Remove/add irregular verbs.">
             <CheckBoxPreference
-                android:title="Regular Present"
+                android:title="Regular Present Indicative"
                 android:summary=""
                 android:key="regular_present"
                 android:defaultValue="true" />
             <CheckBoxPreference
-                android:title="Irregular Present"
+                android:title="Irregular Present Indicative"
                 android:summary=""
                 android:key="irregular_present"
                 android:defaultValue="true" />
             <CheckBoxPreference
-                android:title="Regular Preterite"
+                android:title="Regular Preterite Indicative"
                 android:summary=""
                 android:key="regular_preterite"
                 android:defaultValue="true" />
             <CheckBoxPreference
-                android:title="Irregular Preterite"
+                android:title="Irregular Preterite Indicative"
                 android:summary=""
                 android:key="irregular_preterite"
                 android:defaultValue="true" />

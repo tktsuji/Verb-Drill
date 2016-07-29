@@ -20,22 +20,29 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Game"
+            android:name=".FillNBlank"
             android:configChanges="orientation"
             android:screenOrientation="portrait" />
-        <activity android:name=".Settings"
+        <activity
+            android:name=".Settings"
             android:label="Settings"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".UserLog"
             android:screenOrientation="portrait" />
-        <activity android:name=".Help"
+        <activity
+            android:name=".Help"
             android:screenOrientation="portrait" />
-        <activity android:name=".GameOverScreen"
+        <activity
+            android:name=".GameOverScreen"
             android:screenOrientation="portrait" />
-        <activity android:name=".GameModeSelection"
+        <activity
+            android:name=".GameModeSelection"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".MultipleChoice"
+            android:label="@string/title_activity_multiple_choice"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
