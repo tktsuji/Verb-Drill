@@ -77,7 +77,7 @@ public class WordBank {
             new IrregVerbPreterite("paid", "pagar", "pagu\u00E9", "pagaste", "pag\u00F3", "pagamos", "pagaron"),
             new RegVerbPreterite("studied", "estudiar"),
             new IrregVerbPreterite("wanted", "querer", "quise", "quisiste", "quiso", "quisimos", "quisieron"),
-            new RegVerbPreterite("work", "trabajar")
+            new RegVerbPreterite("worked", "trabajar")
     };
 
     public WordBank() {

@@ -15,22 +15,22 @@ import android.widget.TextView;
 
 public class FillNBlank extends Game {
     private EditText answer; // answer that user types into blank
-    private TextView finalAnswerTV, spSubjTV;
+    private TextView finalAnswerTV;
 
     public void setupUI() {
         setContentView(R.layout.game);
         answer = (EditText) findViewById(R.id.editTxtAnswer);
         finalAnswerTV = (TextView) findViewById(R.id.txtViewFinalAnswer);
-        spSubjTV = (TextView) findViewById(R.id.txtViewSpSubject);
-        spSubjTV.setTypeface(tf);
     }
 
-    public void displayPhrase() {
-        // Display phrase
+    public void updateQuestion() {
+        generatePhrase();
+
+        // DISPLAY ENGLISH PHRASE AND SPANISH SUBJECT
         engPhraseTV.setText(engPhrase);
         spSubjTV.setText(spSubject);
 
-        // Display Spanish infinitive and current tense to use
+        // DISPLAY SPANISH INFINITIVE AND CURRENT TENSE TO USE
         String spInfinAndTense = "(" + randVerb.getSpInfinitive() + " - " + randVerb.getVerbTense() + " tense)";
         spInfinTV.setText(spInfinAndTense.toUpperCase());
     }
@@ -53,8 +53,7 @@ public class FillNBlank extends Game {
             finalAnswerTV.setVisibility(View.INVISIBLE);
             ++streak;
             streakNumTV.setText(Integer.toString(streak));
-            generatePhrase();
-            displayPhrase();
+            updateQuestion();
         }
         else {
             onIncorrectAnswer();

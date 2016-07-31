@@ -42,12 +42,12 @@ public abstract class Game extends Activity {
     };
     protected String engPhrase;     // The phrase to be translated
     protected String spSubject;     // The Spanish subject of the sentence
-    protected String correctPhrase; // The correct Spanish translation
+    protected String correctPhrase; // The correct Spanish translation of engPhrase
     protected String userPhrase;    // The user's inputted response
 
     // BUTTONS AND TEXTS
     protected Button buttonGo;
-    protected TextView spInfinTV, engPhraseTV, streakNumTV,
+    protected TextView spInfinTV, engPhraseTV, streakNumTV, spSubjTV,
             streakTV, timeTV;
 
     // FONT, SOUND, AND TIME OBJECTS
@@ -72,6 +72,7 @@ public abstract class Game extends Activity {
     protected boolean isSoundFxOn = true;
 
     abstract void setupUI();
+    abstract void updateQuestion();
 
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,8 +95,7 @@ public abstract class Game extends Activity {
 
     protected void onStart() {
         super.onStart();
-        generatePhrase();
-        displayPhrase();
+        updateQuestion();
     }
 
     public void generatePhrase() {
@@ -126,8 +126,6 @@ public abstract class Game extends Activity {
         engPhrase = engSubject + " " + engVerb + ".";
     }
 
-    abstract void displayPhrase();
-
     public String getCorrectAnswer() {
         String correctAnswer;
         if (randSubjIndx == 0) // yo form
@@ -140,7 +138,7 @@ public abstract class Game extends Activity {
             correctAnswer = randVerb.getNosotros();
         else
             correctAnswer = randVerb.getUstedes();
-        correctPhrase = SP_SUBJECTS[randSubjIndx] + " " + correctAnswer;
+        correctPhrase = spSubject + " " + correctAnswer;
         return correctAnswer;
     }
 
@@ -177,6 +175,8 @@ public abstract class Game extends Activity {
         spInfinTV.setTypeface(tf);
         engPhraseTV = (TextView) findViewById(R.id.txtViewEngPhrase);
         engPhraseTV.setTypeface(tf);
+        spSubjTV = (TextView) findViewById(R.id.txtViewSpSubject);
+        spSubjTV.setTypeface(tf);
         streakTV = (TextView) findViewById(R.id.txtViewStreak);
         streakTV.setTypeface(tf);
         streakNumTV = (TextView) findViewById(R.id.txtViewStreakNum);

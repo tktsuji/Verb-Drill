@@ -41,7 +41,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".MultipleChoice"
-            android:label="@string/title_activity_multiple_choice"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
