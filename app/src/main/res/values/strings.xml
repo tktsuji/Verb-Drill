@@ -21,11 +21,11 @@
     <string name="txtViewVerbsInPlay2">in Play: </string>
     <string name="txtViewVerbsInPlayNum">0</string>
 
-    <string name="txtViewOver">Whoops!</string>
     <string name="txtViewWordPrompt">Prompt: </string>
     <string name="txtViewCorrect">Correct Answer: </string>
     <string name="txtViewYourResponse">Your Response: </string>
     <string name="txtViewHighStreak">High Streak: </string>
+
     <string name="title_activity_settings">Settings</string>
 
     <string name="selectVerbs">Verb Selection</string>

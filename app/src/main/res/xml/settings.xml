@@ -31,7 +31,7 @@
         <PreferenceScreen
             android:key="select_tenses_key"
             android:title="@string/selectTenses"
-            android:summary="Turn tenses on/off. Remove/add irregular verbs.">
+            android:summary="Turn tenses on/off. Remove/add verbs with irregular conjugations.">
             <CheckBoxPreference
                 android:title="Regular Present Indicative"
                 android:summary=""
@@ -39,7 +39,7 @@
                 android:defaultValue="true" />
             <CheckBoxPreference
                 android:title="Irregular Present Indicative"
-                android:summary=""
+                android:summary="Includes any verb with at least one irregular form in this tense."
                 android:key="irregular_present"
                 android:defaultValue="true" />
             <CheckBoxPreference
@@ -49,7 +49,7 @@
                 android:defaultValue="true" />
             <CheckBoxPreference
                 android:title="Irregular Preterite Indicative"
-                android:summary=""
+                android:summary="Includes any verb with at least one irregular form in this tense"
                 android:key="irregular_preterite"
                 android:defaultValue="true" />
         </PreferenceScreen>

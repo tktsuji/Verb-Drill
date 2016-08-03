@@ -31,7 +31,7 @@ public class FillNBlank extends Game {
         spSubjTV.setText(spSubject);
 
         // DISPLAY SPANISH INFINITIVE AND CURRENT TENSE TO USE
-        String spInfinAndTense = "(" + randVerb.getSpInfinitive() + " - " + randVerb.getVerbTense() + " tense)";
+        String spInfinAndTense = "(" + randVerb.getSpInfinitive() + " - " + randVerb.getVerbTense() + ")";
         spInfinTV.setText(spInfinAndTense.toUpperCase());
     }
 

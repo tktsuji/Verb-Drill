@@ -17,8 +17,6 @@ public class MainMenu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
         Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/chalkboard-bold.ttf");
         Button startBtn = (Button) findViewById(R.id.buttonStart);
         Button settingsBtn = (Button) findViewById(R.id.buttonSettings);
@@ -40,24 +38,6 @@ public class MainMenu extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_main_menu, menu);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         return true;
-    }
-
-    // Respond to press on dropdown menu on Main Menu
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_help) {
-            Intent i = new Intent(this, Help.class);
-            startActivity(i);
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 
     // Respond to button press on Main Menu

@@ -60,8 +60,8 @@ public abstract class Game extends Activity {
     // OBJECTS TO MAKE EXPANDABLE LISTS THAT SHOW THE VERBS AND VERB TENSES THAT ARE IN PLAY
     protected ExpandableListAdapter listAdapter;
     protected ExpandableListView expListView;
-    List<String> listDataHeader;
-    HashMap<String, List<String>> listDataChild;
+    protected List<String> listDataHeader;
+    protected HashMap<String, List<String>> listDataChild;
 
     protected SharedPreferences sharedPreferences;
     // VALUES THAT WILL BE LOADED FROM PREFERENCES (SETTINGS)
@@ -152,11 +152,17 @@ public abstract class Game extends Activity {
     }
 
     public void onIncorrectAnswer() {
+        // PREPARE DATA TO BE TRANSFERRED TO GAMEOVERSCREEN ACTIVITY
+        String stopTime = timer.getText().toString();
+        timer.stop();
+
         Intent i = new Intent(this, GameOverScreen.class);
         i.putExtra("engPhrase", engPhrase);
         i.putExtra("correctPhrase", correctPhrase);
         i.putExtra("userPhrase", userPhrase);
         i.putExtra("streak", streak);
+        i.putExtra("time", stopTime);
+        i.putExtra("childDataHash", listDataChild);
         startActivity(i);
         finish();
     }
@@ -193,8 +199,9 @@ public abstract class Game extends Activity {
         isGroupChecked[groupNum++] = sharedPreferences.getBoolean("group2_key", false);
         isGroupChecked[groupNum++] = sharedPreferences.getBoolean("group3_key", false);
         isGroupChecked[groupNum++] = sharedPreferences.getBoolean("group4_key", false);
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 4; i++) {
             if (isGroupChecked[i]) numSelected++;
+        }
         verbList = wordBank.getSelectedVerbs(isGroupChecked, numSelected);
 
         // LOAD PREFERENCES FOR WHICH VERB TENSES AND FORMS WILL APPEAR IN THE GAME.

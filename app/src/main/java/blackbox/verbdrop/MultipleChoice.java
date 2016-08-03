@@ -27,7 +27,7 @@ public class MultipleChoice extends Game {
         engPhraseTV.setText(engPhrase);
         spSubjTV.setText(spSubject);
         // DISPLAY SPANISH INFINITIVE AND CURRENT TENSE TO USE
-        String spInfinAndTense = "(" + randVerb.getSpInfinitive() + " - " + randVerb.getVerbTense() + " tense)";
+        String spInfinAndTense = "(" + randVerb.getSpInfinitive() + " - " + randVerb.getVerbTense() + ")";
         spInfinTV.setText(spInfinAndTense.toUpperCase());
 
         setCorrectRadioButton();
@@ -39,15 +39,18 @@ public class MultipleChoice extends Game {
         int selectedBttnID = radioGroup.getCheckedRadioButtonId();
         RadioButton userSelectedBttn = (RadioButton) radioGroup.findViewById(selectedBttnID);
         int userSelectedBttnIndx = radioGroup.indexOfChild(userSelectedBttn);
-        userPhrase = spSubject + " " + userSelectedBttn.getText().toString();
-        if (userSelectedBttnIndx == correctRadioBttn) {
-            playSound();
-            ++streak;
-            streakNumTV.setText(Integer.toString(streak));
-            updateQuestion();
-        }
-        else {
+        if (selectedBttnID == -1) {
             onIncorrectAnswer();
+        } else {
+            userPhrase = spSubject + " " + userSelectedBttn.getText().toString();
+            if (userSelectedBttnIndx == correctRadioBttn) {
+                playSound();
+                ++streak;
+                streakNumTV.setText(Integer.toString(streak));
+                updateQuestion();
+            } else {
+                onIncorrectAnswer();
+            }
         }
     }
 

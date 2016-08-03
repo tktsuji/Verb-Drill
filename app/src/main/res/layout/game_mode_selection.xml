@@ -4,24 +4,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
-    android:weightSum="8">
+    android:weightSum="10">
 
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/selectMode"
-        android:src="@drawable/selectmode"
+        android:src="@drawable/selectmode2"
         android:layout_gravity="center_horizontal"
         android:layout_weight="1"
-        android:layout_margin="6dp" />
+        android:layout_marginTop="16dp" />
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:gravity="center"
-        android:layout_weight="3"
+        android:layout_weight="4"
         android:layout_marginBottom="16dp"
         android:layout_marginTop="16dp">
         <TextView
@@ -42,7 +42,7 @@
             android:onClick="onMode1"
             android:background="@color/colorOffWhite"
             android:layout_marginRight="16dp"
-            android:textSize="20sp"/>
+            android:textSize="24sp"/>
     </LinearLayout>
 
     <LinearLayout
@@ -50,7 +50,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:gravity="center"
-        android:layout_weight="3"
+        android:layout_weight="4"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp">
         <TextView
@@ -70,7 +70,7 @@
             android:id="@+id/buttonMode2"
             android:background="@color/colorOffWhite"
             android:layout_marginRight="16dp"
-            android:textSize="20sp"
+            android:textSize="24sp"
             android:onClick="onMode2" />
     </LinearLayout>
 
@@ -80,11 +80,12 @@
         android:text="@string/txtViewNote"
         android:id="@+id/txtViewNote"
         android:layout_gravity="center_horizontal"
-        android:textSize="16sp"
+        android:textSize="14sp"
         android:layout_weight="1"
-        android:layout_marginBottom="6dp"
+        android:layout_marginBottom="2dp"
         android:layout_marginTop="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:textColor="#000000" />
+
 </LinearLayout>
