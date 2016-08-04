@@ -19,6 +19,7 @@ public class FillNBlank extends Game {
 
     public void setupUI() {
         setContentView(R.layout.game);
+        MODE = 1;
         answer = (EditText) findViewById(R.id.editTxtAnswer);
         finalAnswerTV = (TextView) findViewById(R.id.txtViewFinalAnswer);
     }

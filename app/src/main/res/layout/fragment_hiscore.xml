@@ -1,9 +1,112 @@
-<?xml version="1.0" encoding="utf-8"?>
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center"
-    android:id="@+id/tvLabel"
-    android:textColor="@color/colorRed1"
-    android:textSize="20sp"
-    android:background="@color/colorOffWhite" />
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/colorPrimary">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txtViewFillBlank"
+            android:id="@+id/textViewFillNBlank"
+            android:layout_gravity="center_horizontal"
+            android:textSize="24sp"
+            android:textColor="@color/colorRed1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txtViewHighStreak"
+            android:id="@+id/textViewHiscoreFNB"
+            android:layout_gravity="center_horizontal"
+            android:textSize="20sp"
+            android:textColor="#000000" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" "
+            android:id="@+id/textViewHiscoreFNB2"
+            android:layout_gravity="center_horizontal"
+            android:textSize="28sp"
+            android:textColor="#000000" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txtViewUltimateStreak"
+            android:id="@+id/textViewUltimateHiscoreFNB"
+            android:layout_gravity="center_horizontal"
+            android:textSize="20sp"
+            android:textColor="#000000" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" "
+            android:id="@+id/textViewUltimateHiscoreFNB2"
+            android:layout_gravity="center_horizontal"
+            android:textSize="28sp"
+            android:textColor="#000000" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txtViewMC"
+            android:id="@+id/textViewMC"
+            android:layout_gravity="center_horizontal"
+            android:textSize="24sp"
+            android:textColor="@color/colorRed1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txtViewHighStreak"
+            android:id="@+id/textViewHiscoreMC"
+            android:layout_gravity="center_horizontal"
+            android:textSize="20sp"
+            android:textColor="#000000" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" "
+            android:id="@+id/textViewHiscoreMC2"
+            android:layout_gravity="center_horizontal"
+            android:textSize="28sp"
+            android:textColor="#000000" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txtViewUltimateStreak"
+            android:id="@+id/textViewUltimateHiscoreMC"
+            android:layout_gravity="center_horizontal"
+            android:textSize="20sp"
+            android:textColor="#000000" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" "
+            android:id="@+id/textViewUltimateHiscoreMC2"
+            android:layout_gravity="center_horizontal"
+            android:textSize="28sp"
+            android:textColor="#000000" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txtViewStreakExplanation"
+        android:id="@+id/textViewStreakExplanation"
+        android:textSize="16sp"
+        android:textColor="#000000"
+        android:layout_margin="16dp"
+        android:layout_alignParentBottom="true"/>
+
+</RelativeLayout>

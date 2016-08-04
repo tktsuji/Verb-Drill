@@ -1,20 +1,25 @@
 package blackbox.verbdrop;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 /**
- *  Displays Game Over screen.
+ *  Displays Game Over screen. Updates hiscore and allows user to save record of the game
+ *  to the UserLog.
  */
 public class GameOverScreen extends Activity {
 
@@ -24,8 +29,10 @@ public class GameOverScreen extends Activity {
     List<String> listDataHeader;
     HashMap<String, List<String>> listDataChild;
 
-    // BUTTONS
-    private Button buttonSave, buttonDone;
+    // FOR UPDATING HISCORE
+    private int streak;
+    private int mode;
+    private static int TOTAL_VERBGROUPSNTENSES = 8;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,8 +59,10 @@ public class GameOverScreen extends Activity {
         prompt2TV.setText(extras.getString("engPhrase"));
         correctAnsw2TV.setText(extras.getString("correctPhrase"));
         yourResponse2TV.setText(extras.getString("userPhrase"));
-        streak2TV.setText(Integer.toString(extras.getInt("streak")));
+        streak = extras.getInt("streak");
+        streak2TV.setText(Integer.toString(streak));
         time2TV.setText(extras.getString("time"));
+        mode = extras.getInt("mode");
 
         listDataHeader = new ArrayList<String>();
         listDataHeader.add("Verb Groups In Play");
@@ -64,9 +73,57 @@ public class GameOverScreen extends Activity {
         listAdapter = new ExpandableListAdapter(this, listDataHeader, listDataChild);
         expListView.setAdapter(listAdapter);
 
-        buttonSave = (Button) findViewById(R.id.buttonSave);
-        buttonDone = (Button) findViewById(R.id.buttonDone);
+        Button buttonSave = (Button) findViewById(R.id.buttonSave);
+        Button buttonDone = (Button) findViewById(R.id.buttonDone);
         buttonSave.setTypeface(tf);
         buttonDone.setTypeface(tf);
+
+        updateHiscore();
     }
+
+    public void updateHiscore() {
+        SharedPreferences sharedPref = getSharedPreferences("hiscoreData", Context.MODE_PRIVATE);
+
+        int ultimateHiscoreFNB = sharedPref.getInt("ultimateHiscoreFNB", 0);
+        int ultimateHiscoreMC  = sharedPref.getInt("ultimateHiscoreMC", 0);
+        int hiscoreFNB = sharedPref.getInt("hiscoreFNB", 0);
+        int hiscoreMC  = sharedPref.getInt("hiscoreMC", 0);
+        int numOfGroupsTensesChecked = listDataChild.get("Verb Groups In Play").size()
+                + listDataChild.get("Verb Tenses In Play").size();
+        Toast toast=Toast.makeText(getApplicationContext(),"New Hiscore!", Toast.LENGTH_SHORT);
+        Toast toast2=Toast.makeText(getApplicationContext(),"New Ultimate Hiscore!",Toast.LENGTH_SHORT);
+        if (mode == 1) {
+            if (streak > hiscoreFNB) {
+                hiscoreFNB = streak;
+                toast.show();
+            }
+            if (streak > ultimateHiscoreFNB && (numOfGroupsTensesChecked == TOTAL_VERBGROUPSNTENSES)) {
+                ultimateHiscoreFNB = streak;
+                toast2.show();
+            }
+        }
+        else if (mode == 2) {
+            if (streak > hiscoreMC) {
+                hiscoreMC = streak;
+                toast.show();
+            }
+            if (streak > ultimateHiscoreMC && numOfGroupsTensesChecked == TOTAL_VERBGROUPSNTENSES) {
+                ultimateHiscoreMC = streak;
+                toast2.show();
+            }
+        }
+
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putInt("hiscoreFNB", hiscoreFNB);
+        editor.putInt("hiscoreMC", hiscoreMC);
+        editor.putInt("ultimateHiscoreFNB", ultimateHiscoreFNB);
+        editor.putInt("ultimateHiscoreMC", ultimateHiscoreMC);
+        editor.apply();
+    }
+
+    public void onDone(View v) {
+        Intent i = new Intent(this, MainMenu.class);
+        startActivity(i);
+    }
+
 }

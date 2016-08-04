@@ -165,7 +165,8 @@
             android:background="@color/colorGreen1"
             android:layout_marginLeft="10dp"
             android:paddingLeft="20dp"
-            android:paddingRight="20dp" />
+            android:paddingRight="20dp"
+            android:onClick="onDone" />
     </RelativeLayout>
 
 

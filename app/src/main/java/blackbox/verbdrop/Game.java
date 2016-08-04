@@ -26,6 +26,7 @@ import java.util.Random;
  *  Settings.
  */
 public abstract class Game extends Activity {
+    protected static int MODE; // 1 for FNB, 2 for MC
     protected WordBank wordBank = new WordBank();
     protected Verb randVerb;
     protected int randSubjIndx;
@@ -70,6 +71,10 @@ public abstract class Game extends Activity {
     protected boolean[] isGroupChecked = new boolean[4];
     protected boolean isText2SpeechOn = true;
     protected boolean isSoundFxOn = true;
+    boolean isRegPres;
+    boolean isIrregPres;
+    boolean isRegPret;
+    boolean isIrregPret;
 
     abstract void setupUI();
     abstract void updateQuestion();
@@ -157,6 +162,7 @@ public abstract class Game extends Activity {
         timer.stop();
 
         Intent i = new Intent(this, GameOverScreen.class);
+        i.putExtra("mode", MODE);
         i.putExtra("engPhrase", engPhrase);
         i.putExtra("correctPhrase", correctPhrase);
         i.putExtra("userPhrase", userPhrase);
@@ -193,6 +199,7 @@ public abstract class Game extends Activity {
     public void loadPreferences() {
         sharedPreferences =  PreferenceManager.getDefaultSharedPreferences(this);
         // LOAD PREFERENCES FOR WHICH VERB GROUPS WILL APPEAR IN THE GAME.
+
         int groupNum = 0;
         int numSelected = 0;
         isGroupChecked[groupNum++] = sharedPreferences.getBoolean("group1_key", false);
@@ -202,13 +209,25 @@ public abstract class Game extends Activity {
         for (int i = 0; i < 4; i++) {
             if (isGroupChecked[i]) numSelected++;
         }
+
+        // IF THERE ARE NO ITEMS CHECKED, THEN ONLY GROUP 1 WILL PLAY
+        if (numSelected == 0) {
+            isGroupChecked[0] = true;
+            numSelected = 1;
+        }
+
         verbList = wordBank.getSelectedVerbs(isGroupChecked, numSelected);
 
         // LOAD PREFERENCES FOR WHICH VERB TENSES AND FORMS WILL APPEAR IN THE GAME.
-        boolean isRegPres   = sharedPreferences.getBoolean("regular_present", true);
-        boolean isIrregPres = sharedPreferences.getBoolean("irregular_present", true);
-        boolean isRegPret   = sharedPreferences.getBoolean("regular_preterite", true);
-        boolean isIrregPret = sharedPreferences.getBoolean("irregular_preterite", true);
+        isRegPres   = sharedPreferences.getBoolean("regular_present", true);
+        isIrregPres = sharedPreferences.getBoolean("irregular_present", true);
+        isRegPret   = sharedPreferences.getBoolean("regular_preterite", true);
+        isIrregPret = sharedPreferences.getBoolean("irregular_preterite", true);
+
+        // IF THERE ARE NO ITEMS CHECKED, THEN ONLY REGULAR PRESENT TENSE WILL PLAY
+        if (!isRegPres && !isIrregPres && !isRegPret && !isIrregPret)
+            isRegPres = true;
+
         verbList = wordBank.removeTense(verbList, isRegPres, isIrregPres, isRegPret, isIrregPret);
         numOfVerbs = verbList.length;
 
@@ -234,13 +253,13 @@ public abstract class Game extends Activity {
         }
 
         List<String> verbTensesInPlay = new ArrayList<String>();
-        if (sharedPreferences.getBoolean("regular_present", true))
+        if (isRegPres)
             verbTensesInPlay.add("Regular Present");
-        if (sharedPreferences.getBoolean("irregular_present", true))
+        if (isIrregPres)
             verbTensesInPlay.add("Irregular Present");
-        if (sharedPreferences.getBoolean("regular_preterite", true))
+        if (isRegPret)
             verbTensesInPlay.add("Regular Preterite");
-        if (sharedPreferences.getBoolean("irregular_preterite", true))
+        if (isIrregPret)
             verbTensesInPlay.add("Irregular Preterite");
 
         listDataChild.put(listDataHeader.get(0), verbGroupsInPlay); // Header, Child data

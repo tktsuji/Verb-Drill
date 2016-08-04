@@ -15,6 +15,7 @@ public class MultipleChoice extends Game {
 
     public void setupUI() {
         setContentView(R.layout.activity_multiple_choice);
+        MODE = 2;
         radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
         for (int i = 0; i < NUM_OPTIONS; i++) {
             ((RadioButton)radioGroup.getChildAt(i)).setTypeface(tf);

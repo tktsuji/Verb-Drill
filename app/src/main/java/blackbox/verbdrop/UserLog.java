@@ -42,7 +42,7 @@ public class UserLog extends FragmentActivity {
                 case 0: // Fragment # 0 - This will show FirstFragment
                     return HiscoreFragment.newInstance("HISCORE");
                 case 1: // Fragment # 0 - This will show FirstFragment different title
-                    return HiscoreFragment.newInstance("LOG");
+                    return LogFragment.newInstance("LOG");
                 default:
                     return null;
             }

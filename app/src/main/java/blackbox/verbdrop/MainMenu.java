@@ -61,4 +61,9 @@ public class MainMenu extends AppCompatActivity {
                 break;
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        // DISABLED, DO NOTHING
+    }
 }
