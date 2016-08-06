@@ -76,15 +76,15 @@ public class MultipleChoice extends Game {
         // PUT THE INCORRECT FORMS OF THE VERB (FOR THE CURRENT QUESTION) INTO AN ARRAY
         String[] otherConjugations = {"", "", "", ""};
         int nextIndx = 0;
-        if ( !theCorrectAnswer.equals(yo) && nextIndx < 4)
+        if ( !theCorrectAnswer.equals(yo) )
             otherConjugations[nextIndx++] = yo;
-        if ( !theCorrectAnswer.equals(tu) && nextIndx < 4)
+        if ( !theCorrectAnswer.equals(tu) )
             otherConjugations[nextIndx++] = tu;
-        if ( !theCorrectAnswer.equals(usted) && nextIndx < 4)
+        if ( !theCorrectAnswer.equals(usted) )
             otherConjugations[nextIndx++] = usted;
-        if ( !theCorrectAnswer.equals(nosotros) && nextIndx < 4)
+        if ( !theCorrectAnswer.equals(nosotros) )
             otherConjugations[nextIndx++] = nosotros;
-        if ( !theCorrectAnswer.equals(ustedes) && nextIndx < 4)
+        if ( !theCorrectAnswer.equals(ustedes) )
             otherConjugations[nextIndx] = ustedes;
 
         // SHUFFLE POSSIBILITIES SO CONJUGATIONS ARE NOT ALWAYS DISPLAYED IN SAME ORDER

@@ -73,9 +73,7 @@ public class GameOverScreen extends Activity {
         listAdapter = new ExpandableListAdapter(this, listDataHeader, listDataChild);
         expListView.setAdapter(listAdapter);
 
-        Button buttonSave = (Button) findViewById(R.id.buttonSave);
         Button buttonDone = (Button) findViewById(R.id.buttonDone);
-        buttonSave.setTypeface(tf);
         buttonDone.setTypeface(tf);
 
         updateHiscore();

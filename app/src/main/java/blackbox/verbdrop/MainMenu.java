@@ -56,7 +56,7 @@ public class MainMenu extends AppCompatActivity {
                 startActivity(i);
                 break;
             case R.id.buttonLog :
-                i = new Intent(this, UserLog.class);
+                i = new Intent(this, Hiscore.class);
                 startActivity(i);
                 break;
         }

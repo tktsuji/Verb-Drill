@@ -56,13 +56,13 @@
                 android:textColor="@color/colorRed1"
                 android:textSize="30sp" />
             <Button
-                android:id="@+id/buttonSettings"
+                android:id="@+id/buttonLog"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:background="@color/colorOffWhite"
-                android:onClick="ButtonOnClick"
-                android:text="@string/buttonSettings"
-                android:textSize="20dp" />
+                android:text="@string/buttonLog"
+                android:textSize="20dp"
+                android:onClick="ButtonOnClick" />
         </LinearLayout>
 
         <LinearLayout
@@ -81,13 +81,13 @@
                 android:textColor="@color/colorRed1"
                 android:textSize="30sp" />
             <Button
-                android:id="@+id/buttonLog"
+                android:id="@+id/buttonSettings"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:background="@color/colorOffWhite"
-                android:text="@string/buttonLog"
-                android:textSize="20dp"
-                android:onClick="ButtonOnClick" />
+                android:onClick="ButtonOnClick"
+                android:text="@string/buttonSettings"
+                android:textSize="20dp" />
         </LinearLayout>
 
     </LinearLayout>

@@ -28,9 +28,6 @@
             android:label="Settings"
             android:screenOrientation="portrait"></activity>
         <activity
-            android:name=".UserLog"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".Help"
             android:screenOrientation="portrait" />
         <activity
@@ -43,6 +40,9 @@
             android:name=".MultipleChoice"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".Hiscore"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

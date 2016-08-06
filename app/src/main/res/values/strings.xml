@@ -3,7 +3,7 @@
     <string name="action_help">Help</string>
     <string name="buttonStart">Start</string>
     <string name="buttonSettings">Settings</string>
-    <string name="buttonLog">Log</string>
+    <string name="buttonLog">Hiscore</string>
 
     <string name="txtViewFillBlank">Fill-in-the-Blank</string>
     <string name="txtViewMC">Multiple Choice</string>

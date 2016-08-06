@@ -270,7 +270,7 @@ public abstract class Game extends Activity {
     public void onBackPressed() {
         new AlertDialog.Builder(this)
                 .setTitle("Exit Game")
-                .setMessage("Are you sure you want to quit? This session will not be saved.")
+                .setMessage("Are you sure you want to quit?")
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener()
                 {
                     @Override
