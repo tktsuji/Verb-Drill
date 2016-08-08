@@ -9,22 +9,22 @@
         android:summary="Turn verbs on/off.">
             <CheckBoxPreference
                 android:title="Group 1"
-                android:summary="ser, comer, escuchar, vivir hablar"
+                android:summary="comer, hablar, escuchar, estudiar, ser"
                 android:key="group1_key"
                 android:defaultValue="true" />
             <CheckBoxPreference
                 android:title="Group 2"
-                android:summary="ayudar, leer, correr, ver, pensar"
+                android:summary="estar, leer, llamar, trabajar, vivir"
                 android:key="group2_key"
                 android:defaultValue="true" />
             <CheckBoxPreference
                 android:title="Group 3"
-                android:summary="llegar, creer, llamar, llevar, ir"
+                android:summary="ayudar, escribir, ir, llegar, ver"
                 android:key="group3_key"
                 android:defaultValue="true" />
             <CheckBoxPreference
                 android:title="Group 4"
-                android:summary="tener, pagar, estudiar, querer, trabajar"
+                android:summary="caminar, llevar, pagar, tener, querer"
                 android:key="group4_key"
                 android:defaultValue="true" />
         </PreferenceScreen>
@@ -51,6 +51,16 @@
                 android:title="Irregular Preterite Indicative"
                 android:summary="Includes any verb with at least one irregular form in this tense"
                 android:key="irregular_preterite"
+                android:defaultValue="true" />
+            <CheckBoxPreference
+                android:title="Regular Future Indicative"
+                android:summary=""
+                android:key="regular_future"
+                android:defaultValue="true" />
+            <CheckBoxPreference
+                android:title="Irregular Future Indicative"
+                android:summary="Includes any verb with at least one irregular form in this tense"
+                android:key="irregular_future"
                 android:defaultValue="true" />
         </PreferenceScreen>
     </PreferenceCategory>

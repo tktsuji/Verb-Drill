@@ -37,14 +37,15 @@ public abstract class Game extends Activity {
             "You all", "They", "They"
     };
     protected static final String[] SP_SUBJECTS = {
-            "Yo", "T\u00FA", "Usted",
-            "\u00C9l", "Ella", "Nosotros",
+            "Yo", "Tú", "Usted",
+            "Él", "Ella", "Nosotros",
             "Ustedes", "Ellos", "Ellas"
     };
     protected String engPhrase;     // The phrase to be translated
     protected String spSubject;     // The Spanish subject of the sentence
     protected String correctPhrase; // The correct Spanish translation of engPhrase
     protected String userPhrase;    // The user's inputted response
+    protected static int    NUM_GROUPS = 4;
 
     // BUTTONS AND TEXTS
     protected Button buttonGo;
@@ -68,13 +69,15 @@ public abstract class Game extends Activity {
     // VALUES THAT WILL BE LOADED FROM PREFERENCES (SETTINGS)
     protected Verb[] verbList;
     protected int numOfVerbs;
-    protected boolean[] isGroupChecked = new boolean[4];
+    protected boolean[] isGroupChecked = new boolean[NUM_GROUPS];
     protected boolean isText2SpeechOn = true;
     protected boolean isSoundFxOn = true;
     boolean isRegPres;
     boolean isIrregPres;
     boolean isRegPret;
     boolean isIrregPret;
+    boolean isRegFut;
+    boolean isIrregFut;
 
     abstract void setupUI();
     abstract void updateQuestion();
@@ -161,7 +164,10 @@ public abstract class Game extends Activity {
         String stopTime = timer.getText().toString();
         timer.stop();
 
+
         Intent i = new Intent(this, GameOverScreen.class);
+        i.putExtra("spInfin", randVerb.getSpInfinitive());
+        i.putExtra("verbTense", randVerb.getVerbTense());
         i.putExtra("mode", MODE);
         i.putExtra("engPhrase", engPhrase);
         i.putExtra("correctPhrase", correctPhrase);
@@ -206,7 +212,7 @@ public abstract class Game extends Activity {
         isGroupChecked[groupNum++] = sharedPreferences.getBoolean("group2_key", false);
         isGroupChecked[groupNum++] = sharedPreferences.getBoolean("group3_key", false);
         isGroupChecked[groupNum++] = sharedPreferences.getBoolean("group4_key", false);
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < NUM_GROUPS; i++) {
             if (isGroupChecked[i]) numSelected++;
         }
 
@@ -223,12 +229,15 @@ public abstract class Game extends Activity {
         isIrregPres = sharedPreferences.getBoolean("irregular_present", true);
         isRegPret   = sharedPreferences.getBoolean("regular_preterite", true);
         isIrregPret = sharedPreferences.getBoolean("irregular_preterite", true);
+        isRegFut    = sharedPreferences.getBoolean("regular_future", true);
+        isIrregFut  = sharedPreferences.getBoolean("irregular_future", true);
 
         // IF THERE ARE NO ITEMS CHECKED, THEN ONLY REGULAR PRESENT TENSE WILL PLAY
-        if (!isRegPres && !isIrregPres && !isRegPret && !isIrregPret)
+        if (!isRegPres && !isIrregPres && !isRegPret && !isIrregPret && !isRegFut && !isIrregFut)
             isRegPres = true;
 
-        verbList = wordBank.removeTense(verbList, isRegPres, isIrregPres, isRegPret, isIrregPret);
+        verbList = wordBank.removeTense(verbList, isRegPres, isIrregPres, isRegPret, isIrregPret,
+                                        isRegFut, isIrregFut);
         numOfVerbs = verbList.length;
 
         // LOAD PREFERENCES FOR SOUNDS
@@ -246,7 +255,7 @@ public abstract class Game extends Activity {
 
         // Adding child data
         List<String> verbGroupsInPlay = new ArrayList<String>();
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < NUM_GROUPS; i++) {
             if (isGroupChecked[i]) {
                 verbGroupsInPlay.add("Group " + Integer.toString(i+1));
             }
@@ -261,6 +270,10 @@ public abstract class Game extends Activity {
             verbTensesInPlay.add("Regular Preterite");
         if (isIrregPret)
             verbTensesInPlay.add("Irregular Preterite");
+        if (isRegFut)
+            verbTensesInPlay.add("Regular Future");
+        if (isIrregFut)
+            verbTensesInPlay.add("Irregular Future");
 
         listDataChild.put(listDataHeader.get(0), verbGroupsInPlay); // Header, Child data
         listDataChild.put(listDataHeader.get(1), verbTensesInPlay);

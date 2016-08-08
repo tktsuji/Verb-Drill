@@ -76,7 +76,6 @@ public class RegVerbPresent extends Verb {
     public String getYou() {
         return inEnglish;
     }
-
     public String getHeShe() {
         return heShe;
     }

@@ -32,7 +32,7 @@ public class GameOverScreen extends Activity {
     // FOR UPDATING HISCORE
     private int streak;
     private int mode;
-    private static int TOTAL_VERBGROUPSNTENSES = 8;
+    private static int TOTAL_VERBGROUPSNTENSES = 10;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +49,7 @@ public class GameOverScreen extends Activity {
         promptTV.setTypeface(tf);
         TextView timeTV = (TextView) findViewById(R.id.txtViewTime);
         timeTV.setTypeface(tf);
+        TextView prompt2InfinTV = (TextView) findViewById(R.id.txtViewPrompt2Infin);
         TextView prompt2TV = (TextView) findViewById(R.id.txtViewPrompt2);
         TextView correctAnsw2TV = (TextView) findViewById(R.id.txtViewCorrect2);
         TextView yourResponse2TV = (TextView) findViewById(R.id.txtViewYourResponse2);
@@ -56,6 +57,8 @@ public class GameOverScreen extends Activity {
         TextView time2TV = (TextView) findViewById(R.id.txtViewTime2);
 
         Bundle extras = getIntent().getExtras();
+        String infinFormAndTense = "(" + extras.getString("spInfin") + " " + extras.getString("verbTense") + ")";
+        prompt2InfinTV.setText(infinFormAndTense);
         prompt2TV.setText(extras.getString("engPhrase"));
         correctAnsw2TV.setText(extras.getString("correctPhrase"));
         yourResponse2TV.setText(extras.getString("userPhrase"));
