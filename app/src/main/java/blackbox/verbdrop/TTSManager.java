@@ -1,7 +1,10 @@
 package blackbox.verbdrop;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.speech.tts.TextToSpeech;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import java.util.Locale;
 
@@ -15,6 +18,7 @@ public class TTSManager {
 
     private TextToSpeech mTts = null;
     private boolean isLoaded = false;
+    private boolean isLangSupported = false;
 
     public void init(Context context) {
         try {
@@ -35,6 +39,8 @@ public class TTSManager {
 
                 if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
                     Log.e("error", "This Language is not supported");
+                } else {
+                    isLangSupported = true;
                 }
             } else {
                 Log.e("error", "Initialization Failed!");
@@ -54,10 +60,14 @@ public class TTSManager {
     }
 
     public void initQueue(String text) {
-
         if (isLoaded)
             mTts.speak(text, TextToSpeech.QUEUE_FLUSH, null);
         else
             Log.e("error", "TTS Not Initialized");
     }
+
+    public boolean getIsLangSupported() {
+        return isLangSupported;
+    }
+
 }

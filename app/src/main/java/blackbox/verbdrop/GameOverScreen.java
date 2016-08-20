@@ -32,7 +32,7 @@ public class GameOverScreen extends Activity {
     // FOR UPDATING HISCORE
     private int streak;
     private int mode;
-    private static int TOTAL_VERBGROUPSNTENSES = 10;
+    private static int TOTAL_VERBGROUPSNTENSES = 26; // # of verb groups + # of verb tenses
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

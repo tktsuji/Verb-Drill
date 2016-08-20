@@ -45,7 +45,7 @@ public abstract class Game extends Activity {
     protected String spSubject;     // The Spanish subject of the sentence
     protected String correctPhrase; // The correct Spanish translation of engPhrase
     protected String userPhrase;    // The user's inputted response
-    protected static int    NUM_GROUPS = 4;
+    protected static int NUM_GROUPS = 20; // Number of verb groups in WordBank
 
     // BUTTONS AND TEXTS
     protected Button buttonGo;
@@ -103,7 +103,22 @@ public abstract class Game extends Activity {
 
     protected void onStart() {
         super.onStart();
-        updateQuestion();
+        if (numOfVerbs <= 0) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage("There are no verbs that meet your specifications as selected in Settings." +
+                    " Please try adding more verb groups and/or more verb tenses.")
+                    .setCancelable(false)
+                    .setTitle("No Verbs Selected")
+                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            finish();
+                        }
+                    });
+            AlertDialog alert = builder.create();
+            alert.show();
+        } else {
+            updateQuestion();
+        }
     }
 
     public void generatePhrase() {
@@ -131,7 +146,7 @@ public abstract class Game extends Activity {
             engVerb = randVerb.getWe();
         else
             engVerb = randVerb.getThey();
-        engPhrase = engSubject + " " + engVerb + ".";
+        engPhrase = engSubject + " " + engVerb;
     }
 
     public String getCorrectAnswer() {
@@ -182,7 +197,7 @@ public abstract class Game extends Activity {
     public void playSound() {
         if (isSoundFxOn)
             sounds.play(sndwhoosh, 1.0f, 1.0f, 0, 0, 1.5f);
-        if (isText2SpeechOn)
+        if (isText2SpeechOn && ttsManager.getIsLangSupported())
             ttsManager.initQueue(userPhrase);
     }
 
@@ -212,16 +227,26 @@ public abstract class Game extends Activity {
         isGroupChecked[groupNum++] = sharedPreferences.getBoolean("group2_key", false);
         isGroupChecked[groupNum++] = sharedPreferences.getBoolean("group3_key", false);
         isGroupChecked[groupNum++] = sharedPreferences.getBoolean("group4_key", false);
+        isGroupChecked[groupNum++] = sharedPreferences.getBoolean("group5_key", false);
+        isGroupChecked[groupNum++] = sharedPreferences.getBoolean("group6_key", false);
+        isGroupChecked[groupNum++] = sharedPreferences.getBoolean("group7_key", false);
+        isGroupChecked[groupNum++] = sharedPreferences.getBoolean("group8_key", false);
+        isGroupChecked[groupNum++] = sharedPreferences.getBoolean("group9_key", false);
+        isGroupChecked[groupNum++] = sharedPreferences.getBoolean("group10_key", false);
+        isGroupChecked[groupNum++] = sharedPreferences.getBoolean("group11_key", false);
+        isGroupChecked[groupNum++] = sharedPreferences.getBoolean("group12_key", false);
+        isGroupChecked[groupNum++] = sharedPreferences.getBoolean("group13_key", false);
+        isGroupChecked[groupNum++] = sharedPreferences.getBoolean("group14_key", false);
+        isGroupChecked[groupNum++] = sharedPreferences.getBoolean("group15_key", false);
+        isGroupChecked[groupNum++] = sharedPreferences.getBoolean("group16_key", false);
+        isGroupChecked[groupNum++] = sharedPreferences.getBoolean("group17_key", false);
+        isGroupChecked[groupNum++] = sharedPreferences.getBoolean("group18_key", false);
+        isGroupChecked[groupNum++] = sharedPreferences.getBoolean("group19_key", false);
+        isGroupChecked[groupNum++] = sharedPreferences.getBoolean("group20_key", false);
+
         for (int i = 0; i < NUM_GROUPS; i++) {
             if (isGroupChecked[i]) numSelected++;
         }
-
-        // IF THERE ARE NO ITEMS CHECKED, THEN ONLY GROUP 1 WILL PLAY
-        if (numSelected == 0) {
-            isGroupChecked[0] = true;
-            numSelected = 1;
-        }
-
         verbList = wordBank.getSelectedVerbs(isGroupChecked, numSelected);
 
         // LOAD PREFERENCES FOR WHICH VERB TENSES AND FORMS WILL APPEAR IN THE GAME.
@@ -231,13 +256,9 @@ public abstract class Game extends Activity {
         isIrregPret = sharedPreferences.getBoolean("irregular_preterite", true);
         isRegFut    = sharedPreferences.getBoolean("regular_future", true);
         isIrregFut  = sharedPreferences.getBoolean("irregular_future", true);
-
-        // IF THERE ARE NO ITEMS CHECKED, THEN ONLY REGULAR PRESENT TENSE WILL PLAY
-        if (!isRegPres && !isIrregPres && !isRegPret && !isIrregPret && !isRegFut && !isIrregFut)
-            isRegPres = true;
-
         verbList = wordBank.removeTense(verbList, isRegPres, isIrregPres, isRegPret, isIrregPret,
                                         isRegFut, isIrregFut);
+
         numOfVerbs = verbList.length;
 
         // LOAD PREFERENCES FOR SOUNDS
@@ -249,7 +270,7 @@ public abstract class Game extends Activity {
         listDataHeader = new ArrayList<String>();
         listDataChild = new HashMap<String, List<String>>();
 
-        // Adding child data
+        // Adding header data
         listDataHeader.add("Verb Groups In Play");
         listDataHeader.add("Verb Tenses In Play");
 
