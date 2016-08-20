@@ -1,4 +1,4 @@
-package blackbox.verbdrop;
+package blackbox.verbdrill;
 
 import android.content.Context;
 import android.view.View;

@@ -1,4 +1,4 @@
-package blackbox.verbdrop;
+package blackbox.verbdrill;
 
 import android.app.Activity;
 import android.content.DialogInterface;
@@ -223,26 +223,26 @@ public abstract class Game extends Activity {
 
         int groupNum = 0;
         int numSelected = 0;
-        isGroupChecked[groupNum++] = sharedPreferences.getBoolean("group1_key", false);
-        isGroupChecked[groupNum++] = sharedPreferences.getBoolean("group2_key", false);
-        isGroupChecked[groupNum++] = sharedPreferences.getBoolean("group3_key", false);
-        isGroupChecked[groupNum++] = sharedPreferences.getBoolean("group4_key", false);
-        isGroupChecked[groupNum++] = sharedPreferences.getBoolean("group5_key", false);
-        isGroupChecked[groupNum++] = sharedPreferences.getBoolean("group6_key", false);
-        isGroupChecked[groupNum++] = sharedPreferences.getBoolean("group7_key", false);
-        isGroupChecked[groupNum++] = sharedPreferences.getBoolean("group8_key", false);
-        isGroupChecked[groupNum++] = sharedPreferences.getBoolean("group9_key", false);
-        isGroupChecked[groupNum++] = sharedPreferences.getBoolean("group10_key", false);
-        isGroupChecked[groupNum++] = sharedPreferences.getBoolean("group11_key", false);
-        isGroupChecked[groupNum++] = sharedPreferences.getBoolean("group12_key", false);
-        isGroupChecked[groupNum++] = sharedPreferences.getBoolean("group13_key", false);
-        isGroupChecked[groupNum++] = sharedPreferences.getBoolean("group14_key", false);
-        isGroupChecked[groupNum++] = sharedPreferences.getBoolean("group15_key", false);
-        isGroupChecked[groupNum++] = sharedPreferences.getBoolean("group16_key", false);
-        isGroupChecked[groupNum++] = sharedPreferences.getBoolean("group17_key", false);
-        isGroupChecked[groupNum++] = sharedPreferences.getBoolean("group18_key", false);
-        isGroupChecked[groupNum++] = sharedPreferences.getBoolean("group19_key", false);
-        isGroupChecked[groupNum++] = sharedPreferences.getBoolean("group20_key", false);
+        isGroupChecked[groupNum++] = sharedPreferences.getBoolean("group1_key", true);
+        isGroupChecked[groupNum++] = sharedPreferences.getBoolean("group2_key", true);
+        isGroupChecked[groupNum++] = sharedPreferences.getBoolean("group3_key", true);
+        isGroupChecked[groupNum++] = sharedPreferences.getBoolean("group4_key", true);
+        isGroupChecked[groupNum++] = sharedPreferences.getBoolean("group5_key", true);
+        isGroupChecked[groupNum++] = sharedPreferences.getBoolean("group6_key", true);
+        isGroupChecked[groupNum++] = sharedPreferences.getBoolean("group7_key", true);
+        isGroupChecked[groupNum++] = sharedPreferences.getBoolean("group8_key", true);
+        isGroupChecked[groupNum++] = sharedPreferences.getBoolean("group9_key", true);
+        isGroupChecked[groupNum++] = sharedPreferences.getBoolean("group10_key", true);
+        isGroupChecked[groupNum++] = sharedPreferences.getBoolean("group11_key", true);
+        isGroupChecked[groupNum++] = sharedPreferences.getBoolean("group12_key", true);
+        isGroupChecked[groupNum++] = sharedPreferences.getBoolean("group13_key", true);
+        isGroupChecked[groupNum++] = sharedPreferences.getBoolean("group14_key", true);
+        isGroupChecked[groupNum++] = sharedPreferences.getBoolean("group15_key", true);
+        isGroupChecked[groupNum++] = sharedPreferences.getBoolean("group16_key", true);
+        isGroupChecked[groupNum++] = sharedPreferences.getBoolean("group17_key", true);
+        isGroupChecked[groupNum++] = sharedPreferences.getBoolean("group18_key", true);
+        isGroupChecked[groupNum++] = sharedPreferences.getBoolean("group19_key", true);
+        isGroupChecked[groupNum++] = sharedPreferences.getBoolean("group20_key", true);
 
         for (int i = 0; i < NUM_GROUPS; i++) {
             if (isGroupChecked[i]) numSelected++;

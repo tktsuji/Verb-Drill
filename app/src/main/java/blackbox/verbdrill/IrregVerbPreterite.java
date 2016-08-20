@@ -1,9 +1,9 @@
-package blackbox.verbdrop;
+package blackbox.verbdrill;
 
 /**
- *  Irregular Future Indicative.
+ * Irregular Preterite Indicative
  */
-public class IrregVerbFuture extends Verb {
+public class IrregVerbPreterite extends Verb {
     private String yo;
     private String tu;
     private String usted;
@@ -16,8 +16,8 @@ public class IrregVerbFuture extends Verb {
     private String we;
     private String they;
 
-    public IrregVerbFuture(String inEnglish, String spInfinitive, String yo, String tu,
-                              String usted, String nosotros, String ustedes) {
+    public IrregVerbPreterite(String inEnglish, String spInfinitive, String yo, String tu,
+                            String usted, String nosotros, String ustedes) {
         super(inEnglish, spInfinitive);
         this.yo = yo;
         this.tu = tu;
@@ -29,12 +29,12 @@ public class IrregVerbFuture extends Verb {
         this.heShe = inEnglish;
         this.we = inEnglish;
         this.they = inEnglish;
-        verbTense = "future";
+        verbTense = "preterite";
     }
 
-    public IrregVerbFuture(String inEnglish, String spInfinitive, String yo, String tu,
-                              String usted, String nosotros, String ustedes, String I, String you,
-                              String heShe, String we, String they) {
+    public IrregVerbPreterite(String inEnglish, String spInfinitive, String yo, String tu,
+                            String usted, String nosotros, String ustedes, String I, String you,
+                            String heShe, String we, String they) {
         super(inEnglish, spInfinitive);
         this.yo = yo;
         this.tu = tu;
@@ -46,7 +46,7 @@ public class IrregVerbFuture extends Verb {
         this.heShe = heShe;
         this.we = we;
         this.they = they;
-        verbTense = "future";
+        verbTense = "preterite";
     }
 
     public String getYo() {
@@ -79,3 +79,4 @@ public class IrregVerbFuture extends Verb {
 
     public String getThey() { return they; }
 }
+

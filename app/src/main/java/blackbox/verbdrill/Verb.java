@@ -1,4 +1,4 @@
-package blackbox.verbdrop;
+package blackbox.verbdrill;
 
 /**
  * Abstract class for Verb objects

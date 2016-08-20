@@ -5,7 +5,7 @@ android {
     buildToolsVersion "23.0.2"
 
     defaultConfig {
-        applicationId "blackbox.verbdrop"
+        applicationId "blackbox.verbdrill"
         minSdkVersion 15
         targetSdkVersion 23
         versionCode 1

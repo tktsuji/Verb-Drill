@@ -1,4 +1,4 @@
-package blackbox.verbdrop;
+package blackbox.verbdrill;
 
 import java.util.ArrayList;
 
@@ -574,17 +574,17 @@ public class WordBank {
                                 boolean isRegFut, boolean isIrregFut) {
         ArrayList<Verb> newList = new ArrayList<Verb>();
         for (int i = 0; i < verbList.length; i++) {
-            if (verbList[i].getClass().toString().equals("class blackbox.verbdrop.RegVerbPresent") && isRegPres)
+            if (verbList[i].getClass().toString().equals("class blackbox.verbdrill.RegVerbPresent") && isRegPres)
                 newList.add(verbList[i]);
-            if (verbList[i].getClass().toString().equals("class blackbox.verbdrop.IrregVerbPresent") && isIrregPres)
+            if (verbList[i].getClass().toString().equals("class blackbox.verbdrill.IrregVerbPresent") && isIrregPres)
                 newList.add(verbList[i]);
-            if (verbList[i].getClass().toString().equals("class blackbox.verbdrop.RegVerbPreterite") && isRegPret)
+            if (verbList[i].getClass().toString().equals("class blackbox.verbdrill.RegVerbPreterite") && isRegPret)
                 newList.add(verbList[i]);
-            if (verbList[i].getClass().toString().equals("class blackbox.verbdrop.IrregVerbPreterite") && isIrregPret)
+            if (verbList[i].getClass().toString().equals("class blackbox.verbdrill.IrregVerbPreterite") && isIrregPret)
                 newList.add(verbList[i]);
-            if (verbList[i].getClass().toString().equals("class blackbox.verbdrop.RegVerbFuture") && isRegFut)
+            if (verbList[i].getClass().toString().equals("class blackbox.verbdrill.RegVerbFuture") && isRegFut)
                 newList.add(verbList[i]);
-            if (verbList[i].getClass().toString().equals("class blackbox.verbdrop.IrregVerbFuture") && isIrregFut)
+            if (verbList[i].getClass().toString().equals("class blackbox.verbdrill.IrregVerbFuture") && isIrregFut)
                 newList.add(verbList[i]);
         }
         return newList.toArray(new Verb[newList.size()]);

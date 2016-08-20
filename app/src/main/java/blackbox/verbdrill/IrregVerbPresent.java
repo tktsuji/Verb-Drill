@@ -1,9 +1,9 @@
-package blackbox.verbdrop;
+package blackbox.verbdrill;
 
 /**
- * Irregular Preterite Indicative
+ * Irregular Present Indicative
  */
-public class IrregVerbPreterite extends Verb {
+public class IrregVerbPresent extends Verb {
     private String yo;
     private String tu;
     private String usted;
@@ -16,7 +16,7 @@ public class IrregVerbPreterite extends Verb {
     private String we;
     private String they;
 
-    public IrregVerbPreterite(String inEnglish, String spInfinitive, String yo, String tu,
+    public IrregVerbPresent(String inEnglish, String spInfinitive, String yo, String tu,
                             String usted, String nosotros, String ustedes) {
         super(inEnglish, spInfinitive);
         this.yo = yo;
@@ -26,13 +26,13 @@ public class IrregVerbPreterite extends Verb {
         this.ustedes = ustedes;
         this.I = inEnglish;
         this.you = inEnglish;
-        this.heShe = inEnglish;
+        this.heShe = inEnglish + "s";
         this.we = inEnglish;
         this.they = inEnglish;
-        verbTense = "preterite";
+        verbTense = "present";
     }
 
-    public IrregVerbPreterite(String inEnglish, String spInfinitive, String yo, String tu,
+    public IrregVerbPresent(String inEnglish, String spInfinitive, String yo, String tu,
                             String usted, String nosotros, String ustedes, String I, String you,
                             String heShe, String we, String they) {
         super(inEnglish, spInfinitive);
@@ -46,7 +46,7 @@ public class IrregVerbPreterite extends Verb {
         this.heShe = heShe;
         this.we = we;
         this.they = they;
-        verbTense = "preterite";
+        verbTense = "present";
     }
 
     public String getYo() {
@@ -78,5 +78,5 @@ public class IrregVerbPreterite extends Verb {
     public String getWe() { return we; }
 
     public String getThey() { return they; }
-}
 
+}

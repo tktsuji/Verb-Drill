@@ -1,10 +1,7 @@
-package blackbox.verbdrop;
+package blackbox.verbdrill;
 
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.speech.tts.TextToSpeech;
-import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import java.util.Locale;
 

@@ -1,4 +1,4 @@
-package blackbox.verbdrop;
+package blackbox.verbdrill;
 
 import android.view.View;
 import android.widget.RadioButton;

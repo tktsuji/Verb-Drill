@@ -1,4 +1,4 @@
-package blackbox.verbdrop;
+package blackbox.verbdrill;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
