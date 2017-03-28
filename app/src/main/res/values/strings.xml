@@ -7,7 +7,7 @@
 
     <string name="txtViewFillBlank">Fill-in-the-Blank</string>
     <string name="txtViewMC">Multiple Choice</string>
-    <string name="txtViewNote">Note: For each mode, translate from English to Spanish. You can go to Settings to select
+    <string name="txtViewNote">For each mode, translate from English to Spanish. You can go to Settings to select
                                 which verbs and verb tenses will appear.</string>
 
     <string name="txtViewPrompt">Translate to Spanish:</string>

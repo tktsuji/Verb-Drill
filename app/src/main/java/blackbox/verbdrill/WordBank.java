@@ -217,7 +217,8 @@ public class WordBank {
                 new IrregVerbPreterite("began", "comenzar", "comencé", "comenzaste", "comenzó", "comenzamos", "comenzaron"),
                 new IrregVerbPreterite("began", "empezar", "empecé", "empezaste", "empezó", "empezamos", "empezaron"),
                 new RegVerbPreterite("thought", "pensar"),
-                new IrregVerbPreterite("was able to", "poder", "pude", "pudiste", "pudo", "pudimos", "pudieron"),
+                new IrregVerbPreterite("was able to", "poder", "pude", "pudiste", "pudo", "pudimos", "pudieron", "was able to",
+                        "were able to", "was able to", "were able to", "were able to"),
                 new RegVerbPreterite("ended", "terminar"),
 
                 // FUTURE

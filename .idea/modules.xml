@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/VerbDrop.iml" filepath="$PROJECT_DIR$/VerbDrop.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Verb-Drill.iml" filepath="$PROJECT_DIR$/Verb-Drill.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

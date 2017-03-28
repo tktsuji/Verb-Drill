@@ -29,15 +29,15 @@
                 android:id="@+id/txtViewArrow"
                 android:layout_gravity="center_vertical"
                 android:textColor="@color/colorRed1"
-                android:textSize="30sp" />
+                android:textSize="40sp" />
             <Button
                 android:id="@+id/buttonStart"
-                android:layout_width="150dp"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:background="@color/colorOffWhite"
                 android:onClick="ButtonOnClick"
                 android:text="@string/buttonStart"
-                android:textSize="20dp" />
+                android:textSize="26sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -54,14 +54,14 @@
                 android:id="@+id/txtViewArrow2"
                 android:layout_gravity="center_vertical"
                 android:textColor="@color/colorRed1"
-                android:textSize="30sp" />
+                android:textSize="40sp" />
             <Button
                 android:id="@+id/buttonLog"
-                android:layout_width="150dp"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:background="@color/colorOffWhite"
                 android:text="@string/buttonLog"
-                android:textSize="20dp"
+                android:textSize="26sp"
                 android:onClick="ButtonOnClick" />
         </LinearLayout>
 
@@ -70,7 +70,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="horizontal"
-            android:layout_marginBottom="24dp">
+            android:layout_marginBottom="54dp">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -79,15 +79,15 @@
                 android:id="@+id/txtViewArrow3"
                 android:layout_gravity="center_vertical"
                 android:textColor="@color/colorRed1"
-                android:textSize="30sp" />
+                android:textSize="40sp" />
             <Button
                 android:id="@+id/buttonSettings"
-                android:layout_width="150dp"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:background="@color/colorOffWhite"
                 android:onClick="ButtonOnClick"
                 android:text="@string/buttonSettings"
-                android:textSize="20dp" />
+                android:textSize="26sp" />
         </LinearLayout>
 
     </LinearLayout>

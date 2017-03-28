@@ -79,13 +79,13 @@
         android:layout_height="wrap_content"
         android:text="@string/txtViewNote"
         android:id="@+id/txtViewNote"
-        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
         android:textSize="14sp"
         android:layout_weight="1"
         android:layout_marginBottom="2dp"
         android:layout_marginTop="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:textColor="#000000" />
+        android:textColor="@android:color/white" />
 
 </LinearLayout>
