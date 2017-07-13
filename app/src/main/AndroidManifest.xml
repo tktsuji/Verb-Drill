@@ -9,10 +9,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="blackbox.verbdrill.MainMenu"
+            android:name=".ActivityMainMenu"
             android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,29 +19,39 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="blackbox.verbdrill.FillNBlank"
+            android:name=".ActivityFillNBlank"
             android:configChanges="orientation"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="blackbox.verbdrill.Settings"
-            android:label="Settings"
-            android:screenOrientation="portrait"></activity>
-        <activity
-            android:name="blackbox.verbdrill.Help"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="blackbox.verbdrill.GameOverScreen"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="blackbox.verbdrill.GameModeSelection"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="blackbox.verbdrill.MultipleChoice"
+            android:label="Fill-in-the-Blank"
+            android:parentActivityName=".ActivityGameModeSelection"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name="blackbox.verbdrill.Hiscore"
+            android:name=".ActivitySettings"
+            android:label="Settings"
+            android:parentActivityName=".ActivityMainMenu"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="blackbox.verbdrill.ActivitySettings" />
+        </activity>
+        <activity
+            android:name=".ActivityGameOverScreen"
+            android:label="Game Over"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ActivityGameModeSelection"
+            android:label="Mode Selection"
+            android:parentActivityName=".ActivityMainMenu"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".ActivityMultipleChoice"
+            android:label="Multiple Choice"
+            android:parentActivityName=".ActivityGameModeSelection"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ActivityReferences"
+            android:label="@string/title_activity_references"
+            android:parentActivityName=".ActivityMainMenu" />
     </application>
 
 </manifest>

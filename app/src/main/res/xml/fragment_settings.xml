@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:title="Verb Settings">
+        <PreferenceScreen
+        android:key="select_verbs_key"
+        android:title="@string/selectVerbs"
+        android:summary="Turn verbs on/off.">
+            <CheckBoxPreference
+                android:title="Group 1"
+                android:summary="comer, hablar, escuchar, estudiar, ser"
+                android:key="group1_key"
+                android:defaultValue="true" />
+            <CheckBoxPreference
+                android:title="Group 2"
+                android:summary="estar, leer, llamar, trabajar, vivir"
+                android:key="group2_key"
+                android:defaultValue="true" />
+            <CheckBoxPreference
+                android:title="Group 3"
+                android:summary="ayudar, escribir, ir, llegar, ver"
+                android:key="group3_key"
+                android:defaultValue="true" />
+            <CheckBoxPreference
+                android:title="Group 4"
+                android:summary="caminar, llevar, pagar, tener, querer"
+                android:key="group4_key"
+                android:defaultValue="true" />
+            <CheckBoxPreference
+                android:title="Group 5"
+                android:summary="beber, cocinar, decir, entender, preguntar"
+                android:key="group5_key"
+                android:defaultValue="true" />
+            <CheckBoxPreference
+                android:title="Group 6"
+                android:summary="buscar, correr, hacer, nadar, oír"
+                android:key="group6_key"
+                android:defaultValue="true" />
+            <CheckBoxPreference
+                android:title="Group 7"
+                android:summary="aprender, conocer, necesitar, saber, tocar"
+                android:key="group7_key"
+                android:defaultValue="true" />
+            <CheckBoxPreference
+                android:title="Group 8"
+                android:summary="dormir, encontrar, jugar, pasar, tomar"
+                android:key="group8_key"
+                android:defaultValue="true" />
+            <CheckBoxPreference
+                android:title="Group 9"
+                android:summary="comenzar, empezar, pensar, poder, terminar"
+                android:key="group9_key"
+                android:defaultValue="true" />
+            <CheckBoxPreference
+                android:title="Group 10"
+                android:summary="abrir, cerrar, comprar, venir, salir"
+                android:key="group10_key"
+                android:defaultValue="true" />
+            <CheckBoxPreference
+                android:title="Group 11"
+                android:summary="contestar, dibujar, enseñar, explicar, firmar"
+                android:key="group11_key"
+                android:defaultValue="true" />
+            <CheckBoxPreference
+                android:title="Group 12"
+                android:summary="aceptar, dar, dejar, presentar, recibir"
+                android:key="group12_key"
+                android:defaultValue="true" />
+            <CheckBoxPreference
+                android:title="Group 13"
+                android:summary="esperar, mirar, permitir, poner, tratar"
+                android:key="group13_key"
+                android:defaultValue="true" />
+            <CheckBoxPreference
+                android:title="Group 14"
+                android:summary="creer, deber, parecer, sentir, soñar"
+                android:key="group14_key"
+                android:defaultValue="true" />
+            <CheckBoxPreference
+                android:title="Group 15"
+                android:summary="conducir, entrar, seguir, visitar, volver"
+                android:key="group15_key"
+                android:defaultValue="true" />
+            <CheckBoxPreference
+                android:title="Group 16"
+                android:summary="bailar, cantar, ganar, intentar, perder"
+                android:key="group16_key"
+                android:defaultValue="true" />
+            <CheckBoxPreference
+                android:title="Group 17"
+                android:summary="cortar, limpiar, olvidar, romper, recordar"
+                android:key="group17_key"
+                android:defaultValue="true" />
+            <CheckBoxPreference
+                android:title="Group 18"
+                android:summary="considerar, contar, pedir, servir, vender"
+                android:key="group18_key"
+                android:defaultValue="true" />
+            <CheckBoxPreference
+                android:title="Group 19"
+                android:summary="cambiar, depender, incluir, lograr, traer"
+                android:key="group19_key"
+                android:defaultValue="true" />
+            <CheckBoxPreference
+                android:title="Group 20"
+                android:summary="existir, llenar, parar, producir, usar"
+                android:key="group20_key"
+                android:defaultValue="true" />
+            <CheckBoxPreference
+                android:title="Group 21"
+                android:summary="comprender, descubrir, desear, reconocer, suponer"
+                android:key="group21_key"
+                android:defaultValue="true" />
+            <CheckBoxPreference
+                android:title="Group 22"
+                android:summary="corregir, crecer, cumplir, practicar, repetir"
+                android:key="group22_key"
+                android:defaultValue="true" />
+            <CheckBoxPreference
+                android:title="Group 23"
+                android:summary="destruir, morir, pegar, quemar, robar"
+                android:key="group23_key"
+                android:defaultValue="true" />
+            <CheckBoxPreference
+                android:title="Group 24"
+                android:summary="crear, criticar, colorear, mostrar, pintar"
+                android:key="group24_key"
+                android:defaultValue="true" />
+            <CheckBoxPreference
+                android:title="Group 25"
+                android:summary="admitir, confesar, gritar, llorar, susurrar"
+                android:key="group25_key"
+                android:defaultValue="true" />
+            <CheckBoxPreference
+                android:title="Group 26"
+                android:summary="continuar, mantener, escoger, sacar, utilizar"
+                android:key="group26_key"
+                android:defaultValue="true" />
+            <CheckBoxPreference
+                android:title="Group 27"
+                android:summary="comparar, levantar, medir, partir, pesar"
+                android:key="group27_key"
+                android:defaultValue="true" />
+            <CheckBoxPreference
+                android:title="Group 28"
+                android:summary="defender, evitar, luchar, matar, rescatar"
+                android:key="group28_key"
+                android:defaultValue="true" />
+            <CheckBoxPreference
+                android:title="Group 29"
+                android:summary="abrazar, amar, compartir, invitar, ofrecer"
+                android:key="group29_key"
+                android:defaultValue="true" />
+            <CheckBoxPreference
+                android:title="Group 30"
+                android:summary="agarrar, alcanzar, recoger, saltar, tirar"
+                android:key="group30_key"
+                android:defaultValue="true" />
+        </PreferenceScreen>
+        <PreferenceScreen
+            android:key="select_tenses_key"
+            android:title="@string/selectTenses"
+            android:summary="Turn tenses on/off. Remove/add verbs with irregular conjugations.">
+            <CheckBoxPreference
+                android:title="Regular Present Indicative"
+                android:summary=""
+                android:key="regular_present"
+                android:defaultValue="true" />
+            <CheckBoxPreference
+                android:title="Irregular Present Indicative"
+                android:summary="Includes any verb with at least one irregular form in this tense."
+                android:key="irregular_present"
+                android:defaultValue="true" />
+            <CheckBoxPreference
+                android:title="Regular Preterite Indicative"
+                android:summary=""
+                android:key="regular_preterite"
+                android:defaultValue="true" />
+            <CheckBoxPreference
+                android:title="Irregular Preterite Indicative"
+                android:summary="Includes any verb with at least one irregular form in this tense"
+                android:key="irregular_preterite"
+                android:defaultValue="true" />
+            <CheckBoxPreference
+                android:title="Regular Future Indicative"
+                android:summary=""
+                android:key="regular_future"
+                android:defaultValue="true" />
+            <CheckBoxPreference
+                android:title="Irregular Future Indicative"
+                android:summary="Includes any verb with at least one irregular form in this tense"
+                android:key="irregular_future"
+                android:defaultValue="true" />
+            <CheckBoxPreference
+                android:title="Regular Imperfect Indicative"
+                android:summary=""
+                android:key="regular_imperfect_indic"
+                android:defaultValue="true" />
+            <CheckBoxPreference
+                android:title="Irregular Imperfect Indicative"
+                android:summary="Includes any verb with at least one irregular form in this tense"
+                android:key="irregular_imperfect_indic"
+                android:defaultValue="true" />
+            <CheckBoxPreference
+                android:title="Regular Present Subjunctive"
+                android:summary=""
+                android:key="regular_present_subj"
+                android:defaultValue="true" />
+            <CheckBoxPreference
+                android:title="Irregular Present Subjunctive"
+                android:summary="Includes any verb with at least one irregular form in this tense"
+                android:key="irregular_present_subj"
+                android:defaultValue="true" />
+        </PreferenceScreen>
+
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="Sound Settings">
+        <CheckBoxPreference
+            android:title="Text-To-Speech (TTS)"
+            android:summary="Have each verb phrase read aloud in Spanish (for supporting devices)."
+            android:key="text_to_speech"
+            android:defaultValue="true" />
+        <CheckBoxPreference
+            android:title="Sound FX"
+            android:summary="Play sound effects."
+            android:key="sound_fx"
+            android:defaultValue="true" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

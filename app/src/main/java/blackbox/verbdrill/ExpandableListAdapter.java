@@ -92,8 +92,6 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
         TextView lblListHeader = (TextView) convertView
                 .findViewById(R.id.lblListHeader);
-        Typeface tf = Typeface.createFromAsset(_context.getAssets(), "fonts/chalkboard-bold.ttf");
-        lblListHeader.setTypeface(tf);
         lblListHeader.setText(headerTitle);
 
         return convertView;

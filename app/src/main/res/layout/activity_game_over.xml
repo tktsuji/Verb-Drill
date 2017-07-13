@@ -1,0 +1,182 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+    <RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorBkgrndGray"
+    android:gravity="center_vertical">
+
+    <LinearLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/gameOverIV"
+        android:layout_margin="16dp"
+        android:orientation="vertical">
+        <android.support.v7.widget.CardView
+            android:id="@+id/correction_cv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            card_view:cardCornerRadius="8dp"
+            card_view:cardElevation="4dp"
+            card_view:cardBackgroundColor="@color/cardview_light_background">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginEnd="8dp"
+                android:gravity="center">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:layout_marginTop="55dp">
+                    <TextView
+                        android:id="@+id/txtViewStreak"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/gameOverStreakTV"
+                        android:textColor="@color/darkGray"
+                        android:textStyle="bold"
+                        android:textSize="20sp"
+                        android:layout_marginRight="4dp"
+                        android:layout_marginEnd="4dp"/>
+
+                    <TextView
+                        android:id="@+id/txtViewStreak2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/txtViewStreak"
+                        android:layout_toEndOf="@id/txtViewStreak"
+                        android:text="0"
+                        android:textColor="@color/darkGray"
+                        android:textSize="20sp"
+                        android:textStyle="bold"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:layout_marginTop="4dp">
+                    <TextView
+                        android:id="@+id/txtViewTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/txtViewTime"
+                        android:textStyle="bold"
+                        android:textSize="20sp"
+                        android:textColor="@color/darkGray"
+                        android:layout_marginRight="4dp"
+                        android:layout_marginEnd="4dp"/>
+
+                    <TextView
+                        android:id="@+id/txtViewTime2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:layout_toRightOf="@id/txtViewTime"
+                        android:layout_toEndOf="@id/txtViewTime"
+                        android:textColor="@color/darkGray"
+                        android:textSize="20sp"
+                        android:textStyle="bold"/>
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/txtViewPrompt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/txtViewWordPrompt"
+                    android:textColor="@color/darkGray"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="16dp"/>
+                <TextView
+                    android:id="@+id/txtViewPrompt2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="prompt"
+                    android:textColor="@color/darkGray"
+                    android:textSize="16sp"/>
+                <TextView
+                    android:id="@+id/txtViewPrompt2Infin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="infin"
+                    android:textColor="@color/darkGray"
+                    android:textSize="16sp"/>
+                <TextView
+                    android:id="@+id/txtViewCorrect"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/txtViewCorrect"
+                    android:textColor="@color/darkGray"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="16dp"/>
+
+                <TextView
+                    android:id="@+id/txtViewCorrect2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="correct"
+                    android:textColor="@color/darkGray"
+                    android:textSize="16sp"/>
+
+                <TextView
+                    android:id="@+id/txtViewYourResponse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/txtViewYourResponse"
+                    android:textColor="@color/darkGray"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="16dp" />
+
+                <TextView
+                    android:id="@+id/txtViewYourResponse2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="response"
+                    android:textColor="@color/darkGray"
+                    android:textSize="16sp"
+                    android:layout_marginBottom="16dp"
+                    android:maxLength="42"/>
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <Button
+            android:id="@+id/buttonDone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            android:text="Done"
+            android:textStyle="bold"
+            android:background="@drawable/blue_bttn_bkgrnd"
+            android:textColor="@color/colorOffWhite"
+            android:onClick="onDone"/>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/gameOverIV"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/game_over_trophy"
+        android:layout_marginBottom="-65dp"/>
+
+
+
+</RelativeLayout>
+</ScrollView>
+

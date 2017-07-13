@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#33b6f3</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#84dc49</color>
-    <color name="colorGreen1">#84dc49</color>
+    <color name="colorPrimary">#03A9F4</color>
+    <color name="colorPrimaryDark">#0277BD</color>
+    <color name="colorAccent">#85d252</color>
+    <color name="colorGreen1">#8bda56</color>
+    <color name="colorGreen2">#7BD644</color>
     <color name="colorOrange1">#EE8A34</color>
-    <color name="colorRed1">#c42314</color>
+    <color name="colorRed1">#bc2624</color>
     <color name="colorYellow1">#F6EF2A</color>
-    <color name="colorOffWhite">#FDFDFD</color>
+    <color name="colorYello2">#FDDD2E</color>
+    <color name="colorOffWhite">#FEFEFE</color>
     <color name="indicator">#ecd95a</color>
+    <color name="darkGray">#312f2f</color>
+    <color name="colorBkgrndWhite">#edf0f5</color>
+    <color name="colorBkgrndGray">#e5e8ea</color>
+    <color name="vowelButtons">#73b647</color>
 </resources>

@@ -1,91 +1,164 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<ScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
-    android:weightSum="10">
+    android:fillViewport="true"
+    android:background="@color/colorBkgrndGray"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
+<LinearLayout
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:background="@color/colorBkgrndGray">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/selectMode"
-        android:src="@drawable/selectmode2"
-        android:layout_gravity="center_horizontal"
-        android:layout_weight="1"
-        android:layout_marginTop="16dp" />
-
-    <LinearLayout
-        android:orientation="horizontal"
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:gravity="center"
-        android:layout_weight="4"
-        android:layout_marginBottom="16dp"
-        android:layout_marginTop="16dp">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text=">"
-            android:id="@+id/txtViewArrow"
-            android:layout_gravity="center_vertical"
-            android:textColor="@color/colorRed1"
-            android:textSize="30sp"
-            android:layout_marginLeft="16dp" />
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="fill_parent"
-            android:text="@string/txtViewFillBlank"
-            android:id="@+id/buttonMode1"
-            android:onClick="onMode1"
-            android:background="@color/colorOffWhite"
-            android:layout_marginRight="16dp"
-            android:textSize="24sp"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:gravity="center"
-        android:layout_weight="4"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text=">"
-            android:id="@+id/txtViewArrow2"
-            android:layout_gravity="center_vertical"
-            android:textColor="@color/colorRed1"
-            android:textSize="30sp"
-            android:layout_marginLeft="16dp" />
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="fill_parent"
-            android:text="@string/txtViewMC"
-            android:id="@+id/buttonMode2"
-            android:background="@color/colorOffWhite"
-            android:layout_marginRight="16dp"
-            android:textSize="24sp"
-            android:onClick="onMode2" />
-    </LinearLayout>
-
-    <TextView
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/txtViewNote"
-        android:id="@+id/txtViewNote"
-        android:gravity="center_horizontal"
-        android:textSize="14sp"
-        android:layout_weight="1"
-        android:layout_marginBottom="2dp"
-        android:layout_marginTop="16dp"
+        android:layout_margin="16dp"
+        card_view:cardCornerRadius="4dp"
+        card_view:cardElevation="4dp"
+        card_view:cardPreventCornerOverlap="false"
+        android:onClick="onMode1">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+            <ImageView
+                android:id="@+id/fillnblank_iv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/fillnblank_cv"
+                android:adjustViewBounds="true"/>
+            <TextView
+                android:id="@+id/fillnblank_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/fillnblank_iv"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="4dp"
+                android:text="Fill-in-the-Blank"
+                android:textSize="26sp"
+                android:textStyle="bold"
+                android:textColor="@color/darkGray"
+                android:layout_centerHorizontal="true"/>
+
+            <TextView
+                android:id="@+id/fnb_hiscore1_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="16dp"
+                android:paddingStart="16dp"
+                android:text=" Hiscore: "
+                android:layout_below="@id/fillnblank_tv"
+                android:drawableLeft="@drawable/ic_trophy"/>
+            <TextView
+                android:id="@+id/fnb_hiscore1_num_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/fnb_hiscore1_tv"
+                android:layout_toEndOf="@id/fnb_hiscore1_tv"
+                android:layout_alignBottom="@id/fnb_hiscore1_tv"
+                android:text="0" />
+
+            <TextView
+                android:id="@+id/fnb_hiscore2_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/fnb_hiscore1_tv"
+                android:paddingLeft="16dp"
+                android:paddingStart="16dp"
+                android:paddingBottom="8dp"
+                android:text=" Hiscore w/ All Verbs and Tenses: "
+                android:drawableLeft="@drawable/ic_trophy2"/>
+            <TextView
+                android:id="@+id/fnb_hiscore2_num_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/fnb_hiscore2_tv"
+                android:layout_toEndOf="@id/fnb_hiscore2_tv"
+                android:layout_alignBottom="@id/fnb_hiscore2_tv"
+                android:paddingBottom="8dp"
+                android:text="0" />
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:textColor="@android:color/white" />
+        card_view:cardCornerRadius="4dp"
+        card_view:cardElevation="4dp"
+        card_view:cardPreventCornerOverlap="false"
+        android:onClick="onMode2">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/multiplechoice_iv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/mc_cardview"
+                android:adjustViewBounds="true"/>
+            <TextView
+                android:id="@+id/multiplechoice_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/multiplechoice_iv"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="4dp"
+                android:text="Multiple Choice"
+                android:textSize="26sp"
+                android:textStyle="bold"
+                android:textColor="@color/darkGray"
+                android:layout_centerHorizontal="true"/>
+
+            <TextView
+                android:id="@+id/mc_hiscore1_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="16dp"
+                android:paddingStart="16dp"
+                android:text=" Hiscore: "
+                android:layout_below="@id/multiplechoice_tv"
+                android:drawableLeft="@drawable/ic_trophy"
+                android:drawableStart="@drawable/ic_trophy"/>
+            <TextView
+                android:id="@+id/mc_hiscore1_num_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/mc_hiscore1_tv"
+                android:layout_toEndOf="@id/mc_hiscore1_tv"
+                android:layout_alignBottom="@id/mc_hiscore1_tv"
+                android:text="0" />
+
+            <TextView
+                android:id="@+id/mc_hiscore2_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/mc_hiscore1_tv"
+                android:paddingLeft="16dp"
+                android:paddingStart="16dp"
+                android:paddingBottom="8dp"
+                android:text=" Hiscore w/ All Verbs and Tenses: "
+                android:drawableLeft="@drawable/ic_trophy2"
+                android:drawableStart="@drawable/ic_trophy2"/>
+            <TextView
+                android:id="@+id/mc_hiscore2_num_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/mc_hiscore2_tv"
+                android:layout_toEndOf="@id/mc_hiscore2_tv"
+                android:layout_alignBottom="@id/mc_hiscore2_tv"
+                android:paddingBottom="8dp"
+                android:text="0" />
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
 
 </LinearLayout>
+</ScrollView>

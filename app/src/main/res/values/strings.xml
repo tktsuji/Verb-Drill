@@ -21,19 +21,102 @@
     <string name="txtViewVerbsInPlay2">in Play: </string>
     <string name="txtViewVerbsInPlayNum">0</string>
 
-    <string name="txtViewWordPrompt">Prompt: </string>
-    <string name="txtViewCorrect">Correct Answer: </string>
-    <string name="txtViewYourResponse">Your Response: </string>
+    <string name="txtViewWordPrompt">Prompt</string>
+    <string name="txtViewCorrect">Correct Answer</string>
+    <string name="txtViewYourResponse">Your Response</string>
 
     <string name="title_activity_settings">Settings</string>
+    <string name="settings_addVerbs"><u>Add/Edit Custom Verbs</u></string>
 
     <string name="selectVerbs">Verb Selection</string>
     <string name="selectTenses">Tense Selection</string>
+    <string name="addCustomVerbs">Custom Verb Creation</string>
     <string name="title_activity_multiple_choice">MultipleChoice</string>
 
     <string name="txtViewHighStreak">Highest Streak: </string>
     <string name="txtViewUltimateStreak">Ultimate High Streak: </string>
-    <string name= "txtViewStreakExplanation">*ultimate high streak: the highest streak
+    <string name="txtViewStreakExplanation">*ultimate high streak: the highest streak
     achieved with all verb groups and all verb tenses in play</string>
+    <string name="title_activity_custom_verbs">Custom Verbs</string>
+
+    <!-- Game Over -->
+    <string name="gameOverStreakTV">Streak: </string>
+    <string name="gameOverBestTV">Best: </string>
+
+
+    <!-- References -->
+    <string name="title_activity_references">Regular Verb Endings</string>
+    <string-array name="tenses_array">
+        <item>Present Indicative</item>
+        <item>Preterite Indicative</item>
+        <item>Imperfect Indicative</item>
+        <item>Future Indicative</item>
+        <item>Present Subjunctive</item>
+    </string-array>
+
+    <string name="present_indic_ar_yo">-o</string>
+    <string name="present_indic_ar_tu">-as</string>
+    <string name="present_indic_ar_usted">-a</string>
+    <string name="present_indic_ar_nosotros">-amos</string>
+    <string name="present_indic_ar_ustedes">-an</string>
+    <string name="present_indic_er_yo">-o</string>
+    <string name="present_indic_er_tu">-es</string>
+    <string name="present_indic_er_usted">-e</string>
+    <string name="present_indic_er_nosotros">-emos</string>
+    <string name="present_indic_er_ustedes">-en</string>
+    <string name="present_indic_ir_yo">-o</string>
+    <string name="present_indic_ir_tu">-es</string>
+    <string name="present_indic_ir_usted">-e</string>
+    <string name="present_indic_ir_nosotros">-imos</string>
+    <string name="present_indic_ir_ustedes">-en</string>
+
+    <string name="preterite_indic_ar_yo">-é</string>
+    <string name="preterite_indic_ar_tu">-aste</string>
+    <string name="preterite_indic_ar_usted">-ó</string>
+    <string name="preterite_indic_ar_nosotros">-amos</string>
+    <string name="preterite_indic_ar_ustedes">-aron</string>
+    <string name="preterite_indic_er_yo">-í</string>
+    <string name="preterite_indic_er_tu">-iste</string>
+    <string name="preterite_indic_er_usted">-ió</string>
+    <string name="preterite_indic_er_nosotros">-imos</string>
+    <string name="preterite_indic_er_ustedes">-ieron</string>
+    <string name="preterite_indic_ir_yo">-í</string>
+    <string name="preterite_indic_ir_tu">-iste</string>
+    <string name="preterite_indic_ir_usted">-ió</string>
+    <string name="preterite_indic_ir_nosotros">-imos</string>
+    <string name="preterite_indic_ir_ustedes">-ieron</string>
+
+    <string name="imperfect_indic_ar_yo">-aba</string>
+    <string name="imperfect_indic_ar_tu">-abas</string>
+    <string name="imperfect_indic_ar_usted">-aba</string>
+    <string name="imperfect_indic_ar_nosotros">-ábamos</string>
+    <string name="imperfect_indic_ar_ustedes">-aban</string>
+    <string name="imperfect_indic_er_yo">-ía</string>
+    <string name="imperfect_indic_er_tu">-ías</string>
+    <string name="imperfect_indic_er_usted">-ía</string>
+    <string name="imperfect_indic_er_nosotros">-íamos</string>
+    <string name="imperfect_indic_er_ustedes">-ían</string>
+    <string name="imperfect_indic_ir_yo">-ía</string>
+    <string name="imperfect_indic_ir_tu">-ías</string>
+    <string name="imperfect_indic_ir_usted">-ía</string>
+    <string name="imperfect_indic_ir_nosotros">-íamos</string>
+    <string name="imperfect_indic_ir_ustedes">-ían</string>
+
+    <string name="future_indic_arErIr_yo">-é</string>
+    <string name="future_indic_arErIr_tu">-ás</string>
+    <string name="future_indic_arErIr_usted">-á</string>
+    <string name="future_indic_arErIr_nosotros">-emos</string>
+    <string name="future_indic_arErIr_ustedes">-án</string>
+
+    <string name="present_subj_ar_yo">-e</string>
+    <string name="present_subj_ar_tu">-es</string>
+    <string name="present_subj_ar_usted">-e</string>
+    <string name="present_subj_ar_nosotros">-emos</string>
+    <string name="present_subj_ar_ustedes">-en</string>
+    <string name="present_subj_erIr_yo">-a</string>
+    <string name="present_subj_erIr_tu">-as</string>
+    <string name="present_subj_erIr_usted">-a</string>
+    <string name="present_subj_erIr_nosotros">-amos</string>
+    <string name="present_subj_erIr_ustedes">-an</string>
 
 </resources>

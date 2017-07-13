@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:fillViewport="true">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="13">
+
+    <Spinner
+        android:id="@+id/references_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text=""
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="8dp">
+    </Spinner>
+
+    <!-- AR ENDINGS **************************************-->
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4"
+        android:background="@color/colorBkgrndGray"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="-AR VERBS"
+            android:textColor="@color/darkGray"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:gravity="center_horizontal"/>
+
+        <TableRow>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="yo:"
+                android:textColor="@color/darkGray"
+                android:textSize="16sp"
+                android:gravity="right" />
+
+            <TextView
+                android:id="@+id/ar_yo_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="-o"
+                android:textColor="@color/darkGray"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:gravity="left"
+                android:paddingLeft="8dp"
+                android:paddingStart="8dp"/>
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="tú:"
+                android:textColor="@color/darkGray"
+                android:textSize="16sp"
+                android:gravity="right"/>
+
+            <TextView
+                android:id="@+id/ar_tu_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="-o"
+                android:textColor="@color/darkGray"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:gravity="left"
+                android:paddingLeft="8dp"
+                android:paddingStart="8dp"/>
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="él/ella/usted:"
+                android:textColor="@color/darkGray"
+                android:textSize="16sp"
+                android:gravity="right"/>
+
+            <TextView
+                android:id="@+id/ar_usted_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="-o"
+                android:textColor="@color/darkGray"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:gravity="left"
+                android:paddingLeft="8dp"
+                android:paddingStart="8dp"/>
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="nosotros:"
+                android:textColor="@color/darkGray"
+                android:textSize="16sp"
+                android:gravity="right"/>
+
+            <TextView
+                android:id="@+id/ar_nosotros_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="-o"
+                android:textColor="@color/darkGray"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:gravity="left"
+                android:paddingLeft="8dp"
+                android:paddingStart="8dp"/>
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="ellos/ellas/ustedes:"
+                android:textColor="@color/darkGray"
+                android:textSize="16sp"
+                android:gravity="right"/>
+
+            <TextView
+                android:id="@+id/ar_ustedes_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="-o"
+                android:textColor="@color/darkGray"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:gravity="left"
+                android:paddingLeft="8dp"
+                android:paddingStart="8dp"/>
+        </TableRow>
+    </TableLayout>
+
+    <!-- ER ENDINGS **************************************-->
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="-ER VERBS"
+            android:textColor="@color/darkGray"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:gravity="center_horizontal"/>
+        <TableRow>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="yo:"
+                android:textColor="@color/darkGray"
+                android:textSize="16sp"
+                android:gravity="right"/>
+
+            <TextView
+                android:id="@+id/er_yo_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="-o"
+                android:textColor="@color/darkGray"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:gravity="left"
+                android:paddingLeft="8dp"/>
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="tú:"
+                android:textColor="@color/darkGray"
+                android:textSize="16sp"
+                android:gravity="right"/>
+
+            <TextView
+                android:id="@+id/er_tu_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="-o"
+                android:textColor="@color/darkGray"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:gravity="left"
+                android:paddingLeft="8dp"/>
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="él/ella/usted:"
+                android:textColor="@color/darkGray"
+                android:textSize="16sp"
+                android:gravity="right"/>
+
+            <TextView
+                android:id="@+id/er_usted_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="-o"
+                android:textColor="@color/darkGray"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:gravity="left"
+                android:paddingLeft="8dp"/>
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="nosotros:"
+                android:textColor="@color/darkGray"
+                android:textSize="16sp"
+                android:gravity="right"/>
+
+            <TextView
+                android:id="@+id/er_nosotros_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="-o"
+                android:textColor="@color/darkGray"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:gravity="left"
+                android:paddingLeft="8dp"/>
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="ellos/ellas/ustedes:"
+                android:textColor="@color/darkGray"
+                android:textSize="16sp"
+                android:gravity="right"/>
+
+            <TextView
+                android:id="@+id/er_ustedes_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="-o"
+                android:textColor="@color/darkGray"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:gravity="left"
+                android:paddingLeft="8dp"/>
+        </TableRow>
+    </TableLayout>
+
+    <!-- IR ENDINGS **************************************-->
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4"
+        android:background="@color/colorBkgrndGray"
+        android:gravity="center_vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="-IR VERBS"
+            android:textColor="@color/darkGray"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:gravity="center_horizontal"/>
+        <TableRow>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="yo:"
+                android:textColor="@color/darkGray"
+                android:textSize="16sp"
+                android:gravity="right"/>
+
+            <TextView
+                android:id="@+id/ir_yo_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="-o"
+                android:textColor="@color/darkGray"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:gravity="left"
+                android:paddingLeft="8dp"/>
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="tú:"
+                android:textColor="@color/darkGray"
+                android:textSize="16sp"
+                android:gravity="right"/>
+
+            <TextView
+                android:id="@+id/ir_tu_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="-o"
+                android:textColor="@color/darkGray"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:gravity="left"
+                android:paddingLeft="8dp"/>
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="él/ella/usted:"
+                android:textColor="@color/darkGray"
+                android:textSize="16sp"
+                android:gravity="right"/>
+
+            <TextView
+                android:id="@+id/ir_usted_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="-o"
+                android:textColor="@color/darkGray"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:gravity="left"
+                android:paddingLeft="8dp"/>
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="nosotros:"
+                android:textColor="@color/darkGray"
+                android:textSize="16sp"
+                android:gravity="right"/>
+
+            <TextView
+                android:id="@+id/ir_nosotros_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="-o"
+                android:textColor="@color/darkGray"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:gravity="left"
+                android:paddingLeft="8dp"/>
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="ellos/ellas/ustedes:"
+                android:textColor="@color/darkGray"
+                android:textSize="16sp"
+                android:gravity="right"/>
+
+            <TextView
+                android:id="@+id/ir_ustedes_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="-o"
+                android:textColor="@color/darkGray"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:gravity="left"
+                android:paddingLeft="8dp"/>
+        </TableRow>
+    </TableLayout>
+
+</LinearLayout>
+</ScrollView>
